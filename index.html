@@ -14,16 +14,16 @@
 }
 
 body {
-    background: linear-gradient(135deg, #101827, #172554);
-    color: white;
     min-height: 100vh;
+    background: linear-gradient(135deg, #111827, #1e3a8a, #312e81);
+    color: white;
 }
 
 .container {
-    width: 92%;
+    width: 100%;
     max-width: 900px;
     margin: auto;
-    padding: 25px 0;
+    padding: 20px;
 }
 
 header {
@@ -32,12 +32,13 @@ header {
 }
 
 header h1 {
-    font-size: 34px;
+    font-size: 35px;
     margin-bottom: 8px;
 }
 
 header p {
-    color: #cbd5e1;
+    color: #dbeafe;
+    font-size: 17px;
 }
 
 .screen {
@@ -52,859 +53,152 @@ header p {
 
 .categories {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 15px;
 }
 
 .category {
     border: none;
-    border-radius: 18px;
-    padding: 22px 15px;
+    border-radius: 22px;
+    padding: 25px 12px;
+    min-height: 150px;
     color: white;
-    font-size: 20px;
     cursor: pointer;
-    background: #1e293b;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2);
     transition: 0.2s;
-    box-shadow: 0 8px 20px rgba(0,0,0,.2);
+    backdrop-filter: blur(8px);
 }
 
 .category:hover {
-    transform: translateY(-4px);
-    background: #26364d;
+    transform: translateY(-5px);
+    background: rgba(255,255,255,0.2);
 }
 
-.category span {
+.category:active {
+    transform: scale(0.96);
+}
+
+.icon {
+    width: 60px;
+    height: 60px;
+    margin: auto auto 12px;
     display: block;
-    font-size: 35px;
-    margin-bottom: 8px;
+    fill: none;
+    stroke: white;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
 }
 
-/* اللعبة */
+.category-title {
+    font-size: 18px;
+    font-weight: bold;
+}
 
-.top-bar {
+/* شاشة الأسئلة */
+
+.game-top {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #1e293b;
-    padding: 15px;
-    border-radius: 15px;
-    margin-bottom: 18px;
+    margin-bottom: 15px;
 }
 
 .score {
-    color: #facc15;
+    background: #16a34a;
+    padding: 10px 17px;
+    border-radius: 12px;
     font-weight: bold;
 }
 
-.timer {
-    color: #38bdf8;
-    font-weight: bold;
+.question-number {
+    background: rgba(255,255,255,0.15);
+    padding: 10px 17px;
+    border-radius: 12px;
 }
 
 .progress {
-    background: #334155;
+    width: 100%;
     height: 9px;
+    background: rgba(255,255,255,0.2);
     border-radius: 20px;
     overflow: hidden;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
 .progress-bar {
     height: 100%;
     width: 0%;
     background: #22c55e;
-    transition: .3s;
+    transition: width 0.3s;
 }
 
-.question-box {
-    background: #1e293b;
-    border-radius: 20px;
-    padding: 25px;
-    box-shadow: 0 10px 30px rgba(0,0,0,.25);
-}
-
-.question-number {
-    color: #94a3b8;
-    margin-bottom: 12px;
+.question-card {
+    background: white;
+    color: #111827;
+    border-radius: 25px;
+    padding: 30px 20px;
+    text-align: center;
 }
 
 .question {
     font-size: 25px;
-    line-height: 1.6;
-    margin-bottom: 22px;
+    font-weight: bold;
+    line-height: 1.5;
+    margin-bottom: 25px;
+}
+
+.timer {
+    display: inline-block;
+    background: #fee2e2;
+    color: #dc2626;
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
 }
 
 .answers {
     display: grid;
-    gap: 12px;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
 }
 
 .answer {
-    border: 2px solid #334155;
-    background: #0f172a;
-    color: white;
-    padding: 16px;
-    border-radius: 14px;
-    font-size: 18px;
+    border: 2px solid #e5e7eb;
+    background: #f9fafb;
+    padding: 17px;
+    border-radius: 15px;
+    font-size: 17px;
     cursor: pointer;
-    text-align: right;
-    transition: .2s;
+    transition: 0.2s;
 }
 
 .answer:hover {
-    border-color: #38bdf8;
-    transform: translateX(-3px);
+    background: #eff6ff;
+    border-color: #3b82f6;
 }
 
 .answer.correct {
-    background: #166534;
-    border-color: #22c55e;
+    background: #dcfce7;
+    border-color: #16a34a;
+    color: #166534;
 }
 
 .answer.wrong {
-    background: #991b1b;
-    border-color: #ef4444;
+    background: #fee2e2;
+    border-color: #dc2626;
+    color: #991b1b;
 }
 
-.answer.disabled {
-    pointer-events: none;
-}
-
-.next-btn,
-.start-btn,
-.back-btn,
-.restart-btn {
-    border: none;
-    padding: 14px 25px;
-    border-radius: 12px;
-    cursor: pointer;
-    font-size: 18px;
-    color: white;
-    margin-top: 18px;
-}
-
-.next-btn {
-    background: #2563eb;
-    display: none;
-}
-
-.start-btn,
-.restart-btn {
-    background: #16a34a;
-}
-
-.back-btn {
-    background: #475569;
+.answer:disabled {
+    cursor: default;
 }
 
 /* النتيجة */
 
-.result-box {
-    background: #1e293b;
-    padding: 35px;
-    text-align: center;
-    border-radius: 22px;
-}
-
-.result-box h2 {
-    font-size: 30px;
-    margin-bottom: 20px;
-}
-
-.final-score {
-    font-size: 45px;
-    color: #facc15;
-    margin: 20px;
-}
-
-@media(max-width:600px) {
-    .categories {
-        grid-template-columns: 1fr;
-    }
-
-    header h1 {
-        font-size: 28px;
-    }
-
-    .question {
-        font-size: 21px;
-    }
-}
-</style>
-</head>
-
-<body>
-
-<div class="container">
-
-<header>
-    <h1>🧠 تحدي المعلومات</h1>
-    <p>اختبر معلوماتك في مختلف المجالات!</p>
-</header>
-
-<!-- الصفحة الرئيسية -->
-
-<div id="home" class="screen active">
-
-    <div class="categories">
-
-        <button class="category" onclick="startGame('general')">
-            <span>🧠</span>
-            معلومات عامة
-        </button>
-
-        <button class="category" onclick="startGame('islamic')">
-            <span>☪️</span>
-            أسئلة دينية إسلامية
-        </button>
-
-        <button class="category" onclick="startGame('history')">
-            <span>🏺</span>
-            تاريخ
-        </button>
-
-        <button class="category" onclick="startGame('geography')">
-            <span>🌍</span>
-            جغرافيا
-        </button>
-
-        <button class="category" onclick="startGame('football')">
-            <span>⚽</span>
-            كورة
-        </button>
-
-        <button class="category" onclick="startGame('science')">
-            <span>🔬</span>
-            علوم
-        </button>
-
-        <button class="category" onclick="startGame('movies')">
-            <span>🎬</span>
-            أفلام ومسلسلات مصرية
-        </button>
-
-        <button class="category" onclick="startGame('technology')">
-            <span>💻</span>
-            تكنولوجيا
-        </button>
-
-        <button class="category" onclick="startGame('literature')">
-            <span>📚</span>
-            لغة وأدب
-        </button>
-
-    </div>
-
-</div>
-
-
-<!-- شاشة اللعبة -->
-
-<div id="game" class="screen">
-
-    <div class="top-bar">
-        <div class="score">⭐ النقاط: <span id="score">0</span></div>
-        <div class="timer">⏱️ <span id="timer">20</span></div>
-    </div>
-
-    <div class="progress">
-        <div class="progress-bar" id="progressBar"></div>
-    </div>
-
-    <div class="question-box">
-
-        <div class="question-number" id="questionNumber"></div>
-
-        <div class="question" id="question"></div>
-
-        <div class="answers" id="answers"></div>
-
-        <button class="next-btn" id="nextBtn" onclick="nextQuestion()">
-            السؤال التالي ➜
-        </button>
-
-    </div>
-
-    <button class="back-btn" onclick="goHome()">
-        ↩️ الأقسام
-    </button>
-
-</div>
-
-
-<!-- النتيجة -->
-
-<div id="result" class="screen">
-
-    <div class="result-box">
-
-        <h2>🏆 خلصت الجولة!</h2>
-
-        <div class="final-score">
-            <span id="finalScore">0</span>
-        </div>
-
-        <p id="resultText"></p>
-
-        <button class="restart-btn" onclick="restartGame()">
-            🔄 العب تاني
-        </button>
-
-        <br>
-
-        <button class="back-btn" onclick="goHome()">
-            🏠 الأقسام
-        </button>
-
-    </div>
-
-</div>
-
-</div>
-
-
-<script>
-
-/* =====================================================
-   بنك الأسئلة
-===================================================== */
-
-const questions = {
-
-general: [
-
-{
-q:"ما هو أكبر محيط في العالم؟",
-a:["المحيط الأطلسي","المحيط الهادئ","المحيط الهندي","المحيط المتجمد"],
-correct:1
-},
-
-{
-q:"كم عدد ألوان قوس قزح؟",
-a:["5","6","7","8"],
-correct:2
-},
-
-{
-q:"ما هو أسرع حيوان بري؟",
-a:["الأسد","الفهد","الحصان","النمر"],
-correct:1
-},
-
-{
-q:"ما هي عاصمة اليابان؟",
-a:["بكين","سيول","طوكيو","بانكوك"],
-correct:2
-},
-
-{
-q:"كم عدد أيام السنة العادية؟",
-a:["360","364","365","366"],
-correct:2
-},
-
-{
-q:"ما هو أكبر كوكب في المجموعة الشمسية؟",
-a:["الأرض","زحل","المشتري","نبتون"],
-correct:2
-},
-
-{
-q:"ما هي العملة الرسمية لليابان؟",
-a:["الوون","الين","الدولار","اليوان"],
-correct:1
-},
-
-{
-q:"كم عدد قارات العالم؟",
-a:["5","6","7","8"],
-correct:2
-},
-
-{
-q:"ما هو الحيوان المعروف بسفينة الصحراء؟",
-a:["الحصان","الجمل","الفيل","الغزال"],
-correct:1
-},
-
-{
-q:"ما هو المعدن الذي رمزه Fe؟",
-a:["الذهب","الفضة","الحديد","النحاس"],
-correct:2
-}
-
-],
-
-
-islamic: [
-
-{
-q:"كم عدد أركان الإسلام؟",
-a:["3","4","5","6"],
-correct:2
-},
-
-{
-q:"ما هي أول سورة في القرآن الكريم؟",
-a:["البقرة","الفاتحة","الإخلاص","الناس"],
-correct:1
-},
-
-{
-q:"كم عدد الصلوات المفروضة في اليوم والليلة؟",
-a:["3","4","5","6"],
-correct:2
-},
-
-{
-q:"ما هو الشهر الذي يصوم فيه المسلمون؟",
-a:["شعبان","رمضان","رجب","محرم"],
-correct:1
-},
-
-{
-q:"ما هي أطول سورة في القرآن الكريم؟",
-a:["آل عمران","النساء","البقرة","المائدة"],
-correct:2
-},
-
-{
-q:"ما اسم الليلة التي هي خير من ألف شهر؟",
-a:["ليلة النصف من شعبان","ليلة القدر","ليلة الإسراء","ليلة عرفة"],
-correct:1
-},
-
-{
-q:"كم عدد أركان الإيمان؟",
-a:["4","5","6","7"],
-correct:2
-},
-
-{
-q:"إلى أين كانت قبلة المسلمين الأولى؟",
-a:["الكعبة","المسجد النبوي","بيت المقدس","المسجد الأموي"],
-correct:2
-},
-
-{
-q:"من هو أول الخلفاء الراشدين؟",
-a:["عمر بن الخطاب","علي بن أبي طالب","أبو بكر الصديق","عثمان بن عفان"],
-correct:2
-},
-
-{
-q:"ما هي السورة التي لا تبدأ بالبسملة؟",
-a:["التوبة","الأنفال","النصر","الفتح"],
-correct:0
-}
-
-],
-
-
-history: [
-
-{
-q:"من بنى الأهرامات؟",
-a:["الرومان","المصريون القدماء","اليونانيون","الفرس"],
-correct:1
-},
-
-{
-q:"من هو أول رئيس لجمهورية مصر؟",
-a:["محمد نجيب","جمال عبد الناصر","أنور السادات","حسني مبارك"],
-correct:0
-},
-
-{
-q:"في أي عام قامت ثورة يوليو المصرية؟",
-a:["1948","1952","1956","1967"],
-correct:1
-},
-
-{
-q:"من هو القائد الذي فتح مصر في العصر الإسلامي؟",
-a:["خالد بن الوليد","عمرو بن العاص","سعد بن أبي وقاص","صلاح الدين"],
-correct:1
-},
-
-{
-q:"من بنى مدينة القاهرة الفاطمية؟",
-a:["صلاح الدين","جوهر الصقلي","عمرو بن العاص","أحمد بن طولون"],
-correct:1
-},
-
-{
-q:"من هو القائد الذي حرر القدس في معركة حطين؟",
-a:["صلاح الدين الأيوبي","قطز","بيبرس","عمرو بن العاص"],
-correct:0
-},
-
-{
-q:"أين قامت الحضارة الفرعونية؟",
-a:["النيل","دجلة","الفرات","الدانوب"],
-correct:0
-},
-
-{
-q:"ما اسم المعركة التي انتصر فيها المسلمون على المغول؟",
-a:["حطين","عين جالوت","اليرموك","القادسية"],
-correct:1
-},
-
-{
-q:"من هو آخر ملوك مصر قبل إعلان الجمهورية؟",
-a:["فاروق","فؤاد","عباس حلمي","سعيد"],
-correct:0
-},
-
-{
-q:"ما الحضارة التي اشتهرت بالكتابة المسمارية؟",
-a:["المصرية","السومرية","الرومانية","الفينيقية"],
-correct:1
-}
-
-],
-
-
-geography: [
-
-{
-q:"ما هي أكبر دولة في العالم من حيث المساحة؟",
-a:["الصين","كندا","روسيا","الولايات المتحدة"],
-correct:2
-},
-
-{
-q:"ما هي عاصمة مصر؟",
-a:["الإسكندرية","القاهرة","الجيزة","بورسعيد"],
-correct:1
-},
-
-{
-q:"ما أطول نهر في إفريقيا؟",
-a:["الأمازون","النيل","الكونغو","الدانوب"],
-correct:1
-},
-
-{
-q:"في أي قارة تقع مصر؟",
-a:["آسيا فقط","إفريقيا","أوروبا","أمريكا"],
-correct:1
-},
-
-{
-q:"ما هي أكبر قارة في العالم؟",
-a:["إفريقيا","أوروبا","آسيا","أمريكا الشمالية"],
-correct:2
-},
-
-{
-q:"ما عاصمة السعودية؟",
-a:["جدة","الرياض","مكة","المدينة"],
-correct:1
-},
-
-{
-q:"ما البحر الذي يفصل بين أوروبا وإفريقيا؟",
-a:["البحر الأحمر","البحر المتوسط","بحر العرب","بحر قزوين"],
-correct:1
-},
-
-{
-q:"أين تقع قناة السويس؟",
-a:["مصر","السعودية","اليونان","تركيا"],
-correct:0
-},
-
-{
-q:"ما عاصمة فرنسا؟",
-a:["روما","مدريد","باريس","برلين"],
-correct:2
-},
-
-{
-q:"ما أعلى جبل في العالم؟",
-a:["إيفرست","الألب","كليمنجارو","الأطلس"],
-correct:0
-}
-
-],
-
-
-football: [
-
-{
-q:"كم عدد لاعبي فريق كرة القدم داخل الملعب؟",
-a:["9","10","11","12"],
-correct:2
-},
-
-{
-q:"كم مدة مباراة كرة القدم الأساسية؟",
-a:["60 دقيقة","80 دقيقة","90 دقيقة","100 دقيقة"],
-correct:2
-},
-
-{
-q:"ما المنتخب الفائز بكأس العالم 2022؟",
-a:["فرنسا","البرازيل","الأرجنتين","ألمانيا"],
-correct:2
-},
-
-{
-q:"من أكثر لاعب سجل أهدافًا في تاريخ كأس العالم؟",
-a:["ميسي","رونالدو","كلوزه","بيليه"],
-correct:2
-},
-
-{
-q:"كم مرة فازت مصر بكأس الأمم الإفريقية؟",
-a:["5","6","7","8"],
-correct:2
-},
-
-{
-q:"أين أقيم كأس العالم 2022؟",
-a:["روسيا","قطر","البرازيل","فرنسا"],
-correct:1
-},
-
-{
-q:"ما النادي المعروف بلقب المارد الأحمر؟",
-a:["الزمالك","الأهلي","الإسماعيلي","المصري"],
-correct:1
-},
-
-{
-q:"كم لاعبًا يكونون في فريق كرة القدم مع البدلاء عادةً؟",
-a:["11 فقط","15","18 أو أكثر حسب المسابقة","22 فقط"],
-correct:2
-},
-
-{
-q:"ما لون البطاقة التي تعني الطرد؟",
-a:["الصفراء","الحمراء","الخضراء","الزرقاء"],
-correct:1
-},
-
-{
-q:"ما اسم البطولة الأهم للمنتخبات في العالم؟",
-a:["دوري الأبطال","كأس العالم","كأس القارات","الدوري الأوروبي"],
-correct:1
-}
-
-],
-
-
-science: [
-
-{
-q:"ما الكوكب المعروف بالكوكب الأحمر؟",
-a:["الزهرة","المريخ","المشتري","عطارد"],
-correct:1
-},
-
-{
-q:"ما الغاز الذي يحتاجه الإنسان للتنفس؟",
-a:["ثاني أكسيد الكربون","الأكسجين","الهيدروجين","النيتروجين"],
-correct:1
-},
-
-{
-q:"ما العضو المسؤول عن ضخ الدم؟",
-a:["الكبد","القلب","الرئة","المعدة"],
-correct:1
-},
-
-{
-q:"ما وحدة قياس القوة؟",
-a:["جول","نيوتن","وات","فولت"],
-correct:1
-},
-
-{
-q:"كم عدد أسنان الإنسان البالغ عادةً؟",
-a:["28","30","32","36"],
-correct:2
-},
-
-{
-q:"ما أقرب كوكب إلى الشمس؟",
-a:["الأرض","عطارد","الزهرة","المريخ"],
-correct:1
-},
-
-{
-q:"ما العملية التي تصنع بها النباتات غذاءها؟",
-a:["التنفس","البناء الضوئي","الهضم","التخمر"],
-correct:1
-},
-
-{
-q:"ما رمز الماء الكيميائي؟",
-a:["CO2","O2","H2O","NaCl"],
-correct:2
-},
-
-{
-q:"ما أكبر عضو في جسم الإنسان؟",
-a:["الكبد","القلب","الجلد","الرئة"],
-correct:2
-},
-
-{
-q:"ما سرعة الضوء تقريبًا؟",
-a:["300 ألف كم/ث","30 ألف كم/ث","3 آلاف كم/ث","3 ملايين كم/ث"],
-correct:0
-}
-
-],
-
-
-movies: [
-
-{
-q:"من قام ببطولة فيلم 'الإرهاب والكباب'؟",
-a:["عادل إمام","أحمد زكي","محمد هنيدي","نور الشريف"],
-correct:0
-},
-
-{
-q:"من بطولة فيلم 'الناظر'؟",
-a:["محمد هنيدي","أحمد حلمي","علاء ولي الدين","هاني رمزي"],
-correct:2
-},
-
-{
-q:"من بطل فيلم 'صعيدي في الجامعة الأمريكية'؟",
-a:["محمد هنيدي","أحمد السقا","كريم عبد العزيز","هاني رمزي"],
-correct:0
-},
-
-{
-q:"من قام ببطولة فيلم 'كده رضا'؟",
-a:["أحمد حلمي","محمد هنيدي","أحمد مكي","هاني رمزي"],
-correct:0
-},
-
-{
-q:"من بطل فيلم 'اللمبي'؟",
-a:["محمد سعد","محمد هنيدي","أحمد مكي","أحمد حلمي"],
-correct:0
-},
-
-{
-q:"من قام ببطولة فيلم 'إسماعيلية رايح جاي'؟",
-a:["محمد هنيدي","محمد فؤاد","علاء ولي الدين","أحمد السقا"],
-correct:1
-},
-
-{
-q:"من بطل فيلم 'عسل أسود'؟",
-a:["أحمد حلمي","محمد هنيدي","أحمد مكي","كريم عبد العزيز"],
-correct:0
-},
-
-{
-q:"من قام ببطولة فيلم 'بوحة'؟",
-a:["محمد سعد","أحمد حلمي","محمد هنيدي","هاني رمزي"],
-correct:0
-},
-
-{
-q:"من بطل فيلم 'تيتو'؟",
-a:["أحمد السقا","كريم عبد العزيز","أحمد عز","هاني سلامة"],
-correct:0
-},
-
-{
-q:"من بطولة فيلم 'الفيل الأزرق'؟",
-a:["أحمد عز","كريم عبد العزيز","أحمد حلمي","محمد رمضان"],
-correct:1
-}
-
-],
-
-
-technology: [
-
-{
-q:"ماذا تعني كلمة CPU؟",
-a:["وحدة التخزين","وحدة المعالجة المركزية","كارت الشاشة","ذاكرة مؤقتة"],
-correct:1
-},
-
-{
-q:"ما الشركة التي تطور نظام Android؟",
-a:["Apple","Google","Microsoft","Samsung"],
-correct:1
-},
-
-{
-q:"ما لغة بناء صفحات الويب الأساسية؟",
-a:["HTML","Python","C++","Java"],
-correct:0
-},
-
-{
-q:"ماذا تعني RAM؟",
-a:["ذاكرة الوصول العشوائي","وحدة معالجة الرسومات","ذاكرة التخزين","نظام التشغيل"],
-correct:0
-},
-
-{
-q:"من يطور نظام Windows؟",
-a:["Google","Apple","Microsoft","IBM"],
-correct:2
-},
-
-{
-q:"ما المتصفح الذي تطوره Google؟",
-a:["Firefox","Chrome","Edge","Safari"],
-correct:1
-},
-
-{
-q:"ما نظام تشغيل أجهزة iPhone؟",
-a:["Android","Windows","iOS","Linux"],
-correct:2
-},
-
-{
-q:"ما اختصار الذكاء الاصطناعي بالإنجليزية؟",
-a:["AR","AI","IT","IA"],
-correct:1
-},
-
-{
-q:"ما وظيفة كارت الشاشة GPU؟",
-a:["معالجة الرسوميات","تخزين الملفات","تشغيل الإنترنت","إدارة الصوت فقط"],
-correct:0
-},
-
-{
-q:"ما وحدة قياس سعة التخزين؟",
-a:["جيجابايت","كيلومتر","فولت","نيوتن"],
-correct:0
-}
-
-],
-
-
-literature: [
-
-{
-q:"من هو أمير الشعراء؟",
-a:["أحمد شوقي","حافظ إبراهيم","المتنبي","نجيب محفوظ"],
-correct:0
-},
-
-{
-q:"من هو شاعر النيل؟",
-a:["أحمد شوقي","حافظ إبراهيم","المتنبي","طه حسين"],
-correct:1
-},
-
-{
-q:"من مؤلف رواية 'الأيام'؟",
-a:["نجيب محفوظ","طه حسين","ت
+.result-card {
+    background: white;
+    color: #111827;
+    border-radius: 25
