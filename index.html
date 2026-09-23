@@ -2,203 +2,783 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>تحدي المعلومات</title>
 
 <style>
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: Arial, Tahoma, sans-serif;
+*{box-sizing:border-box;margin:0;padding:0;font-family:Arial,Tahoma,sans-serif}
+
+body{
+min-height:100vh;
+background:linear-gradient(135deg,#08111f,#123d67,#24145c);
+color:white;
 }
 
-body {
-    min-height: 100vh;
-    background: linear-gradient(135deg, #111827, #1e3a8a, #312e81);
-    color: white;
-}
+.container{max-width:1000px;margin:auto;padding:20px}
 
-.container {
-    width: 100%;
-    max-width: 900px;
-    margin: auto;
-    padding: 20px;
-}
+header{text-align:center;margin-bottom:28px}
+header h1{font-size:38px;margin-bottom:8px}
+header p{font-size:17px;color:#dbeafe}
 
-header {
-    text-align: center;
-    margin-bottom: 25px;
-}
-
-header h1 {
-    font-size: 35px;
-    margin-bottom: 8px;
-}
-
-header p {
-    color: #dbeafe;
-    font-size: 17px;
-}
-
-.screen {
-    display: none;
-}
-
-.screen.active {
-    display: block;
-}
+.screen{display:none}
+.screen.active{display:block}
 
 /* الأقسام */
 
-.categories {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
+.categories{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:18px;
 }
 
-.category {
-    border: none;
-    border-radius: 22px;
-    padding: 25px 12px;
-    min-height: 150px;
-    color: white;
-    cursor: pointer;
-    background: rgba(255,255,255,0.12);
-    border: 1px solid rgba(255,255,255,0.2);
-    transition: 0.2s;
-    backdrop-filter: blur(8px);
+.category{
+border:0;
+padding:0;
+overflow:hidden;
+border-radius:22px;
+background:white;
+cursor:pointer;
+box-shadow:0 10px 30px #0006;
+transition:.2s;
 }
 
-.category:hover {
-    transform: translateY(-5px);
-    background: rgba(255,255,255,0.2);
+.category:hover{transform:translateY(-6px)}
+.category:active{transform:scale(.96)}
+
+.category img{
+display:block;
+width:100%;
+height:170px;
+object-fit:cover;
 }
 
-.category:active {
-    transform: scale(0.96);
+.category-title{
+padding:17px 7px;
+color:#111827;
+font-size:18px;
+font-weight:bold;
 }
 
-.icon {
-    width: 60px;
-    height: 60px;
-    margin: auto auto 12px;
-    display: block;
-    fill: none;
-    stroke: white;
-    stroke-width: 2;
-    stroke-linecap: round;
-    stroke-linejoin: round;
+/* اللعبة */
+
+.game-top{
+display:flex;
+justify-content:space-between;
+gap:10px;
+margin-bottom:15px;
 }
 
-.category-title {
-    font-size: 18px;
-    font-weight: bold;
+.score,.question-number{
+padding:11px 17px;
+border-radius:12px;
+background:#ffffff22;
+font-weight:bold;
 }
 
-/* شاشة الأسئلة */
+.score{background:#16a34a}
 
-.game-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 15px;
+.progress{
+height:9px;
+background:#ffffff25;
+border-radius:20px;
+overflow:hidden;
+margin-bottom:25px;
 }
 
-.score {
-    background: #16a34a;
-    padding: 10px 17px;
-    border-radius: 12px;
-    font-weight: bold;
+.progress-bar{
+height:100%;
+width:0;
+background:#22c55e;
+transition:.3s;
 }
 
-.question-number {
-    background: rgba(255,255,255,0.15);
-    padding: 10px 17px;
-    border-radius: 12px;
+.question-card{
+background:white;
+color:#111827;
+border-radius:25px;
+padding:28px 20px;
+text-align:center;
 }
 
-.progress {
-    width: 100%;
-    height: 9px;
-    background: rgba(255,255,255,0.2);
-    border-radius: 20px;
-    overflow: hidden;
-    margin-bottom: 25px;
+.timer{
+display:inline-block;
+background:#fee2e2;
+color:#dc2626;
+padding:8px 18px;
+border-radius:20px;
+font-weight:bold;
+margin-bottom:18px;
 }
 
-.progress-bar {
-    height: 100%;
-    width: 0%;
-    background: #22c55e;
-    transition: width 0.3s;
+.question{
+font-size:25px;
+font-weight:bold;
+line-height:1.5;
+margin-bottom:25px;
 }
 
-.question-card {
-    background: white;
-    color: #111827;
-    border-radius: 25px;
-    padding: 30px 20px;
-    text-align: center;
+.answers{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:14px;
 }
 
-.question {
-    font-size: 25px;
-    font-weight: bold;
-    line-height: 1.5;
-    margin-bottom: 25px;
+.answer{
+border:2px solid #e5e7eb;
+background:#f9fafb;
+padding:17px;
+border-radius:15px;
+font-size:17px;
+cursor:pointer;
+transition:.2s;
 }
 
-.timer {
-    display: inline-block;
-    background: #fee2e2;
-    color: #dc2626;
-    padding: 8px 18px;
-    border-radius: 20px;
-    font-weight: bold;
-    margin-bottom: 20px;
+.answer:hover{
+background:#eff6ff;
+border-color:#3b82f6;
 }
 
-.answers {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 14px;
+.answer.correct{
+background:#dcfce7;
+border-color:#16a34a;
+color:#166534;
 }
 
-.answer {
-    border: 2px solid #e5e7eb;
-    background: #f9fafb;
-    padding: 17px;
-    border-radius: 15px;
-    font-size: 17px;
-    cursor: pointer;
-    transition: 0.2s;
+.answer.wrong{
+background:#fee2e2;
+border-color:#dc2626;
+color:#991b1b;
 }
 
-.answer:hover {
-    background: #eff6ff;
-    border-color: #3b82f6;
-}
-
-.answer.correct {
-    background: #dcfce7;
-    border-color: #16a34a;
-    color: #166534;
-}
-
-.answer.wrong {
-    background: #fee2e2;
-    border-color: #dc2626;
-    color: #991b1b;
-}
-
-.answer:disabled {
-    cursor: default;
-}
+.answer:disabled{cursor:default}
 
 /* النتيجة */
 
-.result-card {
-    background: white;
-    color: #111827;
-    border-radius: 25
+.result-card{
+background:white;
+color:#111827;
+border-radius:25px;
+padding:40px 20px;
+text-align:center;
+}
+
+.result-card h2{font-size:32px}
+
+.final-score{
+font-size:55px;
+font-weight:bold;
+color:#2563eb;
+margin:20px;
+}
+
+.main-btn{
+border:0;
+background:#2563eb;
+color:white;
+padding:14px 28px;
+border-radius:14px;
+font-size:17px;
+cursor:pointer;
+margin:6px;
+}
+
+.main-btn:hover{background:#1d4ed8}
+
+@media(max-width:700px){
+.categories{grid-template-columns:1fr 1fr}
+.answers{grid-template-columns:1fr}
+header h1{font-size:30px}
+.question{font-size:21px}
+}
+
+@media(max-width:430px){
+.categories{grid-template-columns:1fr}
+.category img{height:190px}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<header>
+<h1>🧠 تحدي المعلومات</h1>
+<p>اختار القسم وابدأ التحدي 🔥</p>
+</header>
+
+<!-- ================= الصفحة الرئيسية ================= -->
+
+<div id="home" class="screen active">
+
+<div class="categories">
+
+<!-- معلومات عامة -->
+<button class="category" onclick="startGame('general')">
+<img alt="معلومات عامة"
+src="data:image/svg+xml;charset=UTF-8,
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'>
+<defs><linearGradient id='a' x1='0' x2='1'><stop stop-color='%231d4ed8'/><stop offset='1' stop-color='%237c3aed'/></linearGradient></defs>
+<rect width='800' height='450' fill='url(%23a)'/>
+<circle cx='400' cy='220' r='120' fill='%23fff' opacity='.15'/>
+<circle cx='400' cy='220' r='80' fill='none' stroke='%23fff' stroke-width='12'/>
+<path d='M400 150v85l55 35' fill='none' stroke='%23fff' stroke-width='12' stroke-linecap='round'/>
+<text x='400' y='390' text-anchor='middle' fill='white' font-size='48' font-family='Arial'>GENERAL QUIZ</text>
+</svg>">
+<div class="category-title">🧠 معلومات عامة</div>
+</button>
+
+<!-- دين -->
+<button class="category" onclick="startGame('islamic')">
+<img alt="أسئلة دينية"
+src="data:image/svg+xml;charset=UTF-8,
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'>
+<defs><linearGradient id='b' x1='0' x2='1'><stop stop-color='%23065f46'/><stop offset='1' stop-color='%230f9f72'/></linearGradient></defs>
+<rect width='800' height='450' fill='url(%23b)'/>
+<circle cx='400' cy='200' r='85' fill='none' stroke='white' stroke-width='15'/>
+<path d='M400 105a95 95 0 1 0 0 190a75 75 0 1 1 0-190z' fill='white'/>
+<path d='M520 120l12 28 30 3-23 20 7 30-26-16-26 16 7-30-23-20 30-3z' fill='white'/>
+<text x='400' y='390' text-anchor='middle' fill='white' font-size='45' font-family='Arial'>ISLAMIC QUIZ</text>
+</svg>">
+<div class="category-title">☪️ أسئلة دينية إسلامية</div>
+</button>
+
+<!-- تاريخ -->
+<button class="category" onclick="startGame('history')">
+<img alt="تاريخ"
+src="data:image/svg+xml;charset=UTF-8,
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'>
+<defs><linearGradient id='c' x1='0' x2='1'><stop stop-color='%23924f12'/><stop offset='1' stop-color='%23d97706'/></linearGradient></defs>
+<rect width='800' height='450' fill='url(%23c)'/>
+<path d='M170 300h460M210 300V180h380v120M190 180h420l-210-90z' fill='%23fff' opacity='.9'/>
+<path d='M260 180v120M350 180v120M440 180v120M530 180v120' stroke='%23924f12' stroke-width='12'/>
+<text x='400' y='390' text-anchor='middle' fill='white' font-size='52' font-family='Arial'>HISTORY</text>
+</svg>">
+<div class="category-title">🏺 تاريخ</div>
+</button>
+
+<!-- جغرافيا -->
+<button class="category" onclick="startGame('geography')">
+<img alt="جغرافيا"
+src="data:image/svg+xml;charset=UTF-8,
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'>
+<defs><linearGradient id='d' x1='0' x2='1'><stop stop-color='%230369a1'/><stop offset='1' stop-color='%2306b6d4'/></linearGradient></defs>
+<rect width='800' height='450' fill='url(%23d)'/>
+<circle cx='400' cy='205' r='115' fill='%2322c55e' stroke='white' stroke-width='10'/>
+<path d='M285 205h230M400 90c-50 55-50 175 0 230M400 90c50 55 50 175 0 230M300 150c60 25 140 25 200 0M300 260c60-25 140-25 200 0' fill='none' stroke='white' stroke-width='7'/>
+<text x='400' y='390' text-anchor='middle' fill='white' font-size='52' font-family='Arial'>GEOGRAPHY</text>
+</svg>">
+<div class="category-title">🌍 جغرافيا</div>
+</button>
+
+<!-- كرة -->
+<button class="category" onclick="startGame('football')">
+<img alt="كرة القدم"
+src="data:image/svg+xml;charset=UTF-8,
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'>
+<defs><linearGradient id='e' x1='0' x2='1'><stop stop-color='%230f766e'/><stop offset='1' stop-color='%2322c55e'/></linearGradient></defs>
+<rect width='800' height='450' fill='url(%23e)'/>
+<circle cx='400' cy='205' r='100' fill='white'/>
+<path d='M400 150l40 30-15 48h-50l-15-48z' fill='%23111827'/>
+<path d='M400 150v-35M440 180l40-25M425 228l25 35M375 228l-25 35M360 180l-40-25' stroke='%23111827' stroke-width='12'/>
+<text x='400' y='390' text-anchor='middle' fill='white' font-size='55' font-family='Arial'>FOOTBALL</text>
+</svg>">
+<div class="category-title">⚽ كورة</div>
+</button>
+
+<!-- علوم -->
+<button class="category" onclick="startGame('science')">
+<img alt="علوم"
+src="data:image/svg+xml;charset=UTF-8,
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'>
+<defs><linearGradient id='f' x1='0' x2='1'><stop stop-color='%237c3aed'/><stop offset='1' stop-color='%23db2777'/></linearGradient></defs>
+<rect width='800' height='450' fill='url(%23f)'/>
+<path d='M350 95h100M375 95v105l-75 130a30 30 0 0 0 25 45h150a30 30 0 0 0 25-45l-75-130V95' fill='none' stroke='white' stroke-width='14'/>
+<path d='M320 285h160' stroke='white' stroke-width='14'/>
+<circle cx='360' cy='260' r='12' fill='white'/>
+<circle cx='430' cy='315' r='14' fill='white'/>
+<text x='400' y='410' text-anchor='middle' fill='white' font-size='55' font-family='Arial'>SCIENCE</text>
+</svg>">
+<div class="category-title">🔬 علوم</div>
+</button>
+
+<!-- أفلام -->
+<button class="category" onclick="startGame('movies')">
+<img alt="أفلام ومسلسلات"
+src="data:image/svg+xml;charset=UTF-8,
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'>
+<defs><linearGradient id='g' x1='0' x2='1'><stop stop-color='%23b91c1c'/><stop offset='1' stop-color='%23f97316'/></linearGradient></defs>
+<rect width='800' height='450' fill='url(%23g)'/>
+<rect x='220' y='105' width='360' height='230' rx='20' fill='white'/>
+<path d='M220 155h360M270 105l45 50M370 105l45 50M470 105l45 50' stroke='%23b91c1c' stroke-width='15'/>
+<path d='M355 205l100 60-100 60z' fill='%23b91c1c'/>
+<text x='400' y='400' text-anchor='middle' fill='white' font-size='48' font-family='Arial'>EGYPTIAN CINEMA</text>
+</svg>">
+<div class="category-title">🎬 أفلام ومسلسلات مصرية</div>
+</button>
+
+<!-- تكنولوجيا -->
+<button class="category" onclick="startGame('technology')">
+<img alt="تكنولوجيا"
+src="data:image/svg+xml;charset=UTF-8,
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'>
+<defs><linearGradient id='h' x1='0' x2='1'><stop stop-color='%230f172a'/><stop offset='1' stop-color='%230256d1'/></linearGradient></defs>
+<rect width='800' height='450' fill='url(%23h)'/>
+<rect x='220' y='85' width='360' height='220' rx='15' fill='none' stroke='white' stroke-width='14'/>
+<path d='M150 350h500M320 350l20-45h120l20 45' fill='none' stroke='white' stroke-width='14'/>
+<path d='M315 190l45 45 125-120' fill='none' stroke='%2322c55e' stroke-width='18'/>
+<text x='400' y='410' text-anchor='middle' fill='white' font-size='55' font-family='Arial'>TECHNOLOGY</text>
+</svg>">
+<div class="category-title">💻 تكنولوجيا</div>
+</button>
+
+<!-- لغة -->
+<button class="category" onclick="startGame('literature')">
+<img alt="لغة وأدب"
+src="data:image/svg+xml;charset=UTF-8,
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'>
+<defs><linearGradient id='i' x1='0' x2='1'><stop stop-color='%237036aa'/><stop offset='1' stop-color='%23a855f7'/></linearGradient></defs>
+<rect width='800' height='450' fill='url(%23i)'/>
+<path d='M120 105h250a35 35 0 0 1 30 30v225H155a35 35 0 0 0-35 35z' fill='white'/>
+<path d='M680 105H430a35 35 0 0 0-30 30v225h245a35 35 0 0 1 35 35z' fill='white'/>
+<path d='M400 135v225' stroke='%237036aa' stroke-width='10'/>
+<text x='400' y='410' text-anchor='middle' fill='white' font-size='55' font-family='Arial'>LANGUAGE</text>
+</svg>">
+<div class="category-title">📚 لغة وأدب</div>
+</button>
+
+</div>
+</div>
+
+
+<!-- ================= شاشة الأسئلة ================= -->
+
+<div id="game" class="screen">
+
+<div class="game-top">
+
+<div class="question-number" id="questionNumber"></div>
+
+<div class="score">
+النقاط: <span id="score">0</span>
+</div>
+
+</div>
+
+<div class="progress">
+<div class="progress-bar" id="progressBar"></div>
+</div>
+
+<div class="question-card">
+
+<div class="timer">
+⏱️ <span id="timer">20</span>
+</div>
+
+<div class="question" id="question"></div>
+
+<div class="answers" id="answers"></div>
+
+</div>
+
+</div>
+
+
+<!-- ================= النتيجة ================= -->
+
+<div id="result" class="screen">
+
+<div class="result-card">
+
+<h2>🎉 خلصت التحدي!</h2>
+
+<div class="final-score">
+<span id="finalScore">0</span>
+</div>
+
+<p id="resultText"></p>
+
+<br>
+
+<button class="main-btn" onclick="restartGame()">🔄 العب تاني</button>
+
+<button class="main-btn" onclick="goHome()">🏠 الأقسام</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<script>
+
+/* =========================
+   الأسئلة
+========================= */
+
+const questions={
+
+general:[
+["ما هي عاصمة مصر؟",["القاهرة","الإسكندرية","الأقصر","أسوان"],0],
+["كم عدد أيام الأسبوع؟",["5","6","7","8"],2],
+["ما أكبر محيط في العالم؟",["الأطلسي","الهندي","الهادئ","المتجمد"],2],
+["كم عدد قارات العالم؟",["5","6","7","8"],2],
+["ما أسرع حيوان بري؟",["الأسد","الفهد","النمر","الحصان"],1],
+["كم شهرًا في السنة؟",["10","11","12","13"],2],
+["ما أكبر كوكب في المجموعة الشمسية؟",["الأرض","المريخ","المشتري","عطارد"],2],
+["ما الحيوان المعروف بسفينة الصحراء؟",["الحصان","الجمل","الفيل","الماعز"],1],
+["كم عدد ألوان قوس قزح؟",["5","6","7","8"],2],
+["ما العملة الرسمية في مصر؟",["الدينار","الجنيه","الريال","الدرهم"],1]
+],
+
+islamic:[
+["كم عدد أركان الإسلام؟",["3","4","5","6"],2],
+["كم عدد الصلوات المفروضة؟",["3","4","5","6"],2],
+["ما أول سورة في المصحف؟",["الفاتحة","البقرة","الإخلاص","الناس"],0],
+["كم جزءًا في القرآن الكريم؟",["20","25","30","40"],2],
+["ما أطول سورة في القرآن؟",["آل عمران","النساء","البقرة","المائدة"],2],
+["ما أقصر سورة في القرآن؟",["العصر","الكوثر","الإخلاص","الفلق"],1],
+["في أي شهر يصوم المسلمون؟",["شعبان","رمضان","شوال","محرم"],1],
+["إلى أي مدينة هاجر النبي ﷺ؟",["الطائف","المدينة المنورة","دمشق","القدس"],1],
+["كم عدد أركان الإيمان؟",["4","5","6","7"],2],
+["ما اسم الليلة التي هي خير من ألف شهر؟",["ليلة الجمعة","ليلة القدر","ليلة النصف","ليلة الإسراء"],1]
+],
+
+history:[
+["من بنى الأهرامات؟",["الرومان","المصريون القدماء","اليونان","الفرس"],1],
+["من أول الخلفاء الراشدين؟",["عمر","علي","أبو بكر","عثمان"],2],
+["من قاد المسلمين في معركة حطين؟",["صلاح الدين","خالد بن الوليد","عمرو بن العاص","طارق بن زياد"],0],
+["أين توجد الأهرامات الشهيرة؟",["الأقصر","أسوان","الجيزة","الإسكندرية"],2],
+["من قاد ثورة 1919 في مصر؟",["سعد زغلول","محمد علي","أحمد عرابي","مصطفى كامل"],0],
+["من بنى مدينة الإسكندرية؟",["الإسكندر الأكبر","نابليون","صلاح الدين","قيصر"],0],
+["ما الكتابة التي اشتهر بها المصريون القدماء؟",["الهيروغليفية","اللاتينية","اليونانية","الفارسية"],0],
+["أين قامت الحضارة المصرية القديمة؟",["وادي النيل","أوروبا","أمريكا","أستراليا"],0],
+["من مؤسس الدولة الأموية؟",["معاوية بن أبي سفيان","هارون الرشيد","صلاح الدين","عمرو بن العاص"],0],
+["ما الحضارة التي بنت المعابد الضخمة في الأقصر؟",["المصرية القديمة","الرومانية","الفارسية","العثمانية"],0]
+],
+
+geography:[
+["ما أكبر قارة في العالم؟",["أفريقيا","أوروبا","آسيا","أستراليا"],2],
+["ما أطول نهر في أفريقيا؟",["النيل","الأمازون","الدانوب","الفرات"],0],
+["ما عاصمة السعودية؟",["جدة","الرياض","مكة","الدمام"],1],
+["ما عاصمة فرنسا؟",["روما","مدريد","باريس","برلين"],2],
+["في أي قارة تقع مصر؟",["آسيا","أفريقيا","أوروبا","أمريكا"],1],
+["ما البحر الذي يفصل أفريقيا عن أوروبا؟",["الأحمر","المتوسط","العربي","قزوين"],1],
+["ما عاصمة اليابان؟",["طوكيو","بكين","سيول","بانكوك"],0],
+["ما أكبر دولة في العالم مساحة؟",["الصين","كندا","روسيا","أمريكا"],2],
+["ما عاصمة إيطاليا؟",["ميلانو","روما","نابولي","تورينو"],1],
+["في أي قارة يقع نهر الأمازون؟",["أفريقيا","آسيا","أوروبا","أمريكا الجنوبية"],3]
+],
+
+football:[
+["كم لاعبًا يبدأ بهم الفريق المباراة داخل الملعب؟",["9","10","11","12"],2],
+["من فاز بكأس العالم 2022؟",["فرنسا","الأرجنتين","البرازيل","ألمانيا"],1],
+["كم دقيقة تستغرق المباراة الأصلية؟",["60","80","90","100"],2],
+["من اللاعب الذي يُسمح له باستخدام يديه داخل منطقة جزائه؟",["المهاجم","المدافع","حارس المرمى","الجناح"],2],
+["كم شوطًا في مباراة كرة القدم؟",["1","2","3","4"],1],
+["ما لون بطاقة الطرد؟",["الصفراء","الحمراء","الخضراء","الزرقاء"],1],
+["كم نقطة للفوز في نظام الثلاث نقاط؟",["1","2","3","4"],2],
+["من ينفذ ركلة الجزاء؟",["أي لاعب من الفريق","الحكم","حارس المرمى فقط","المدرب"],0],
+["ما اسم البطولة العالمية للمنتخبات؟",["دوري الأبطال","كأس العالم","الدوري الأوروبي","كأس السوبر"],1],
+["ما المركز الذي يحرس المرمى؟",["المهاجم","الجناح","حارس المرمى","المدافع"],2]
+],
+
+science:[
+["ما الكوكب المعروف بالكوكب الأحمر؟",["المريخ","الزهرة","عطارد","نبتون"],0],
+["ما الغاز الذي يحتاجه الإنسان للتنفس؟",["الهيدروجين","الأكسجين","النيتروجين","الهيليوم"],1],
+["ما العضو الذي يضخ الدم؟",["الكبد","القلب","الرئة","المعدة"],1],
+["ما أقرب كوكب إلى الشمس؟",["الأرض","المريخ","عطارد","الزهرة"],2],
+["ما القوة التي تجذب الأجسام نحو الأرض؟",["المغناطيسية","الجاذبية","الاحتكاك","الضغط"],1],
+["ما الحالة المعتادة للماء في درجة حرارة الغرفة؟",["صلبة","سائلة","غازية","بلازما"],1],
+["ما مركز المجموعة الشمسية؟",["الأرض","القمر","الشمس","المشتري"],2],
+["ما العملية التي تصنع بها النباتات غذاءها؟",["التنفس","الهضم","البناء الضوئي","التبخر"],2],
+["ما العضوان المسؤولان أساسًا عن التنفس؟",["القلب","الرئتان","الكبد","المعدة"],1],
+["ما الكوكب الأكبر في المجموعة الشمسية؟",["الأرض","زحل","المشتري","المريخ"],2]
+],
+
+movies:[
+["من هو عادل إمام؟",["ممثل مصري","لاعب كرة","مطرب","مخرج فقط"],0],
+["من اشتهر بشخصية اللمبي؟",["محمد هنيدي","أحمد حلمي","محمد سعد","كريم عبد العزيز"],2],
+["من بطل فيلم الفيل الأزرق؟",["كريم عبد العزيز","أحمد حلمي","محمد هنيدي","أحمد السقا"],0],
+["من بطل فيلم عسل أسود؟",["أحمد حلمي","محمد سعد","أحمد السقا","هاني رمزي"],0],
+["من أبطال فيلم الجزيرة؟",["أحمد السقا","أحمد حلمي","محمد هنيدي","كريم عبد العزيز"],0],
+["من أبطال فيلم كده رضا؟",["أحمد حلمي","عادل إمام","محمد هنيدي","أحمد السقا"],0],
+["العمل المعروف بشخصية الكبير هو؟",["الكبير أوي","الاختيار","رأفت الهجان","لن أعيش في جلباب أبي"],0],
+["إسماعيل ياسين كان؟",["ممثلًا مصريًا","لاعبًا","سياسيًا","عالمًا"],0],
+["محمد سعد اشتهر بشخصية؟",["اللمبي","الكبير","حزلقوم","الخواجة"],0],
+["أحمد حلمي يعمل في مجال؟",["التمثيل","كرة القدم","الطب","الهندسة"],0]
+],
+
+technology:[
+["ماذا تعني CPU؟",["وحدة المعالجة المركزية","ذاكرة التخزين","بطاقة الرسوميات","نظام التشغيل"],0],
+["من تطور نظام Android؟",["Google","Apple","Sony","Nintendo"],0],
+["ما المتصفح الذي تطوره Google؟",["Chrome","Safari","Edge","Firefox"],0],
+["ماذا يعني USB؟",["Universal Serial Bus","United System Board","Ultra Speed Browser","User Storage Box"],0],
+["ما نظام تشغيل iPhone؟",["iOS","Android","Windows","Linux"],0],
+["ما وظيفة RAM الأساسية؟",["ذاكرة مؤقتة","طباعة الملفات","تشغيل الصوت","توصيل الإنترنت"],0],
+["ما لغة بناء هيكل صفحات الويب؟",["HTML","MP3","JPEG","PDF"],0],
+["ما الشركة التي تصنع هواتف Galaxy؟",["Samsung","Apple","Google","Microsoft"],0],
+["ما المقصود بـ Wi-Fi؟",["اتصال لاسلكي بالشبكات","نوع شاشة","لغة برمجة","بطارية"],0],
+["ما الجهاز المستخدم لتحريك المؤشر؟",["الفأرة","الطابعة","السماعة","الكاميرا"],0]
+],
+
+literature:[
+["من أمير الشعراء؟",["أحمد شوقي","حافظ إبراهيم","المتنبي","طه حسين"],0],
+["من عميد الأدب العربي؟",["طه حسين","نجيب محفوظ","العقاد","أحمد شوقي"],0],
+["من مؤلف ثلاثية القاهرة؟",["نجيب محفوظ","طه حسين","توفيق الحكيم","العقاد"],0],
+["ما جمع كلمة كتاب؟",["كتب","كتابون","كتابات","كتبة"],0],
+["ما مفرد مدارس؟",["مدرسة","مدرس","درس","مدرسي"],0],
+["ما ضد كلمة سريع؟",["بطيء","قوي","كبير","قصير"],0],
+["ما مفرد أقلام؟",["قلم","قلام","قلمة","كاتب"],0],
+["من مؤلف رواية الأيام؟",["طه حسين","نجيب محفوظ","العقاد","يوسف إدريس"],0],
+["ما ضد كلمة النجاح؟",["الفشل","التفوق","التقدم","الاجتهاد"],0],
+["ما نوع كلمة القاهرة في جملة: القاهرة جميلة؟",["اسم","فعل","حرف","صفة"],0]
+]
+
+};
+
+
+/* =========================
+   متغيرات اللعبة
+========================= */
+
+let currentCategory="";
+let currentQuestions=[];
+let currentIndex=0;
+let score=0;
+let timer=null;
+let timeLeft=20;
+
+
+/* =========================
+   بدء اللعبة
+========================= */
+
+function startGame(category){
+
+currentCategory=category;
+
+currentQuestions=questions[category].map(x=>({
+q:x[0],
+a:x[1],
+correct:x[2]
+}));
+
+/* خلط الأسئلة */
+currentQuestions.sort(()=>Math.random()-.5);
+
+currentIndex=0;
+score=0;
+
+document.getElementById("home").classList.remove("active");
+document.getElementById("result").classList.remove("active");
+document.getElementById("game").classList.add("active");
+
+document.getElementById("score").textContent=score;
+
+showQuestion();
+}
+
+
+/* =========================
+   عرض السؤال
+========================= */
+
+function showQuestion(){
+
+clearInterval(timer);
+
+if(currentIndex>=currentQuestions.length){
+showResult();
+return;
+}
+
+const q=currentQuestions[currentIndex];
+
+document.getElementById("questionNumber").textContent=
+"السؤال "+(currentIndex+1)+" من "+currentQuestions.length;
+
+document.getElementById("question").textContent=q.q;
+
+const answers=document.getElementById("answers");
+
+answers.innerHTML="";
+
+q.a.forEach((answer,index)=>{
+
+const button=document.createElement("button");
+
+button.className="answer";
+button.textContent=answer;
+
+button.onclick=()=>{
+checkAnswer(index,button);
+};
+
+answers.appendChild(button);
+
+});
+
+updateProgress();
+
+timeLeft=20;
+
+document.getElementById("timer").textContent=timeLeft;
+
+timer=setInterval(()=>{
+
+timeLeft--;
+
+document.getElementById("timer").textContent=timeLeft;
+
+if(timeLeft<=0){
+
+clearInterval(timer);
+
+disableAnswers();
+
+setTimeout(()=>{
+
+currentIndex++;
+showQuestion();
+
+},500);
+
+}
+
+},1000);
+
+}
+
+
+/* =========================
+   الإجابة
+========================= */
+
+function checkAnswer(index,button){
+
+clearInterval(timer);
+
+disableAnswers();
+
+const q=currentQuestions[currentIndex];
+
+const all=document.querySelectorAll(".answer");
+
+if(index===q.correct){
+
+button.classList.add("correct");
+
+score+=10;
+
+document.getElementById("score").textContent=score;
+
+}else{
+
+button.classList.add("wrong");
+
+all[q.correct].classList.add("correct");
+
+}
+
+setTimeout(()=>{
+
+currentIndex++;
+showQuestion();
+
+},900);
+
+}
+
+
+/* =========================
+   تعطيل الاختيارات
+========================= */
+
+function disableAnswers(){
+
+document.querySelectorAll(".answer").forEach(button=>{
+button.disabled=true;
+});
+
+}
+
+
+/* =========================
+   شريط التقدم
+========================= */
+
+function updateProgress(){
+
+const percentage=
+(currentIndex/currentQuestions.length)*100;
+
+document.getElementById("progressBar").style.width=
+percentage+"%";
+
+}
+
+
+/* =========================
+   النتيجة
+========================= */
+
+function showResult(){
+
+clearInterval(timer);
+
+document.getElementById("game").classList.remove("active");
+document.getElementById("result").classList.add("active");
+
+document.getElementById("finalScore").textContent=score;
+
+const total=currentQuestions.length*10;
+
+let text="";
+
+if(score===total){
+text="🏆 أسطوري! جبت الدرجة النهائية!";
+}
+else if(score>=70){
+text="🔥 ممتاز جدًا!";
+}
+else if(score>=50){
+text="👏 كويس! تقدر تكسر رقمك.";
+}
+else{
+text="💪 جرّب تاني وهتجيب أعلى!";
+}
+
+document.getElementById("resultText").textContent=text;
+
+}
+
+
+/* =========================
+   إعادة اللعب
+========================= */
+
+function restartGame(){
+startGame(currentCategory);
+}
+
+
+/* =========================
+   الرجوع للأقسام
+========================= */
+
+function goHome(){
+
+clearInterval(timer);
+
+document.getElementById("game").classList.remove("active");
+document.getElementById("result").classList.remove("active");
+document.getElementById("home").classList.add("active");
+
+}
+
+</script>
+
+</body>
+    </html>
