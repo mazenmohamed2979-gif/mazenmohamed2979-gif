@@ -6,19 +6,39 @@
 <title>تحدي المعلومات</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0;font-family:Arial,Tahoma,sans-serif}
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+font-family:Arial,Tahoma,sans-serif
+}
 
 body{
 min-height:100vh;
 background:linear-gradient(135deg,#08111f,#123d67,#24145c);
-color:white;
+color:white
 }
 
-.container{max-width:1000px;margin:auto;padding:20px}
+.container{
+max-width:1050px;
+margin:auto;
+padding:20px
+}
 
-header{text-align:center;margin-bottom:28px}
-header h1{font-size:38px;margin-bottom:8px}
-header p{font-size:17px;color:#dbeafe}
+header{
+text-align:center;
+margin-bottom:28px
+}
+
+header h1{
+font-size:38px;
+margin-bottom:8px
+}
+
+header p{
+font-size:17px;
+color:#dbeafe
+}
 
 .screen{display:none}
 .screen.active{display:block}
@@ -28,7 +48,7 @@ header p{font-size:17px;color:#dbeafe}
 .categories{
 display:grid;
 grid-template-columns:repeat(3,1fr);
-gap:18px;
+gap:18px
 }
 
 .category{
@@ -39,24 +59,82 @@ border-radius:22px;
 background:white;
 cursor:pointer;
 box-shadow:0 10px 30px #0006;
-transition:.2s;
+transition:.2s
 }
 
-.category:hover{transform:translateY(-6px)}
-.category:active{transform:scale(.96)}
+.category:hover{
+transform:translateY(-6px)
+}
+
+.category:active{
+transform:scale(.96)
+}
 
 .category img{
 display:block;
 width:100%;
 height:170px;
-object-fit:cover;
+object-fit:cover
 }
 
 .category-title{
 padding:17px 7px;
 color:#111827;
 font-size:18px;
+font-weight:bold
+}
+
+/* شاشة المستويات */
+
+.level-title{
+text-align:center;
+font-size:30px;
+margin-bottom:25px
+}
+
+.levels{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:20px
+}
+
+.level{
+border:0;
+border-radius:22px;
+padding:30px 15px;
+cursor:pointer;
+color:white;
+font-size:24px;
 font-weight:bold;
+transition:.2s;
+box-shadow:0 10px 25px #0005
+}
+
+.level:hover{
+transform:translateY(-6px)
+}
+
+.easy{background:linear-gradient(135deg,#15803d,#22c55e)}
+.medium{background:linear-gradient(135deg,#b45309,#eab308)}
+.hard{background:linear-gradient(135deg,#991b1b,#ef4444)}
+
+.level small{
+display:block;
+font-size:15px;
+margin-top:10px;
+font-weight:normal
+}
+
+.back{
+display:block;
+margin:25px auto 0;
+border:0;
+padding:13px 25px;
+border-radius:13px;
+background:#ffffff22;
+color:white;
+cursor:pointer;
+font-size:16px
 }
 
 /* اللعبة */
@@ -65,14 +143,14 @@ font-weight:bold;
 display:flex;
 justify-content:space-between;
 gap:10px;
-margin-bottom:15px;
+margin-bottom:15px
 }
 
 .score,.question-number{
 padding:11px 17px;
 border-radius:12px;
 background:#ffffff22;
-font-weight:bold;
+font-weight:bold
 }
 
 .score{background:#16a34a}
@@ -82,14 +160,14 @@ height:9px;
 background:#ffffff25;
 border-radius:20px;
 overflow:hidden;
-margin-bottom:25px;
+margin-bottom:25px
 }
 
 .progress-bar{
 height:100%;
 width:0;
 background:#22c55e;
-transition:.3s;
+transition:.3s
 }
 
 .question-card{
@@ -97,7 +175,30 @@ background:white;
 color:#111827;
 border-radius:25px;
 padding:28px 20px;
-text-align:center;
+text-align:center
+}
+
+.level-badge{
+display:inline-block;
+padding:7px 15px;
+border-radius:20px;
+margin-bottom:15px;
+font-weight:bold
+}
+
+.badge-easy{
+background:#dcfce7;
+color:#166534
+}
+
+.badge-medium{
+background:#fef3c7;
+color:#92400e
+}
+
+.badge-hard{
+background:#fee2e2;
+color:#991b1b
 }
 
 .timer{
@@ -107,20 +208,20 @@ color:#dc2626;
 padding:8px 18px;
 border-radius:20px;
 font-weight:bold;
-margin-bottom:18px;
+margin-bottom:18px
 }
 
 .question{
 font-size:25px;
 font-weight:bold;
 line-height:1.5;
-margin-bottom:25px;
+margin-bottom:25px
 }
 
 .answers{
 display:grid;
 grid-template-columns:1fr 1fr;
-gap:14px;
+gap:14px
 }
 
 .answer{
@@ -130,27 +231,29 @@ padding:17px;
 border-radius:15px;
 font-size:17px;
 cursor:pointer;
-transition:.2s;
+transition:.2s
 }
 
 .answer:hover{
 background:#eff6ff;
-border-color:#3b82f6;
+border-color:#3b82f6
 }
 
 .answer.correct{
 background:#dcfce7;
 border-color:#16a34a;
-color:#166534;
+color:#166534
 }
 
 .answer.wrong{
 background:#fee2e2;
 border-color:#dc2626;
-color:#991b1b;
+color:#991b1b
 }
 
-.answer:disabled{cursor:default}
+.answer:disabled{
+cursor:default
+}
 
 /* النتيجة */
 
@@ -159,16 +262,18 @@ background:white;
 color:#111827;
 border-radius:25px;
 padding:40px 20px;
-text-align:center;
+text-align:center
 }
 
-.result-card h2{font-size:32px}
+.result-card h2{
+font-size:32px
+}
 
 .final-score{
 font-size:55px;
 font-weight:bold;
 color:#2563eb;
-margin:20px;
+margin:20px
 }
 
 .main-btn{
@@ -179,21 +284,43 @@ padding:14px 28px;
 border-radius:14px;
 font-size:17px;
 cursor:pointer;
-margin:6px;
+margin:6px
 }
 
-.main-btn:hover{background:#1d4ed8}
+.main-btn:hover{
+background:#1d4ed8
+}
 
 @media(max-width:700px){
-.categories{grid-template-columns:1fr 1fr}
-.answers{grid-template-columns:1fr}
-header h1{font-size:30px}
-.question{font-size:21px}
+.categories{
+grid-template-columns:1fr 1fr
+}
+
+.levels{
+grid-template-columns:1fr
+}
+
+.answers{
+grid-template-columns:1fr
+}
+
+header h1{
+font-size:30px
+}
+
+.question{
+font-size:21px
+}
 }
 
 @media(max-width:430px){
-.categories{grid-template-columns:1fr}
-.category img{height:190px}
+.categories{
+grid-template-columns:1fr
+}
+
+.category img{
+height:190px
+}
 }
 </style>
 </head>
@@ -204,8 +331,9 @@ header h1{font-size:30px}
 
 <header>
 <h1>🧠 تحدي المعلومات</h1>
-<p>اختار القسم وابدأ التحدي 🔥</p>
+<p>اختار القسم واختبر معلوماتك 🔥</p>
 </header>
+
 
 <!-- ================= الصفحة الرئيسية ================= -->
 
@@ -213,137 +341,48 @@ header h1{font-size:30px}
 
 <div class="categories">
 
-<!-- معلومات عامة -->
-<button class="category" onclick="startGame('general')">
-<img alt="معلومات عامة"
-src="data:image/svg+xml;charset=UTF-8,
-<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'>
-<defs><linearGradient id='a' x1='0' x2='1'><stop stop-color='%231d4ed8'/><stop offset='1' stop-color='%237c3aed'/></linearGradient></defs>
-<rect width='800' height='450' fill='url(%23a)'/>
-<circle cx='400' cy='220' r='120' fill='%23fff' opacity='.15'/>
-<circle cx='400' cy='220' r='80' fill='none' stroke='%23fff' stroke-width='12'/>
-<path d='M400 150v85l55 35' fill='none' stroke='%23fff' stroke-width='12' stroke-linecap='round'/>
-<text x='400' y='390' text-anchor='middle' fill='white' font-size='48' font-family='Arial'>GENERAL QUIZ</text>
-</svg>">
+<button class="category" onclick="chooseCategory('general')">
+<img src="data:image/svg+xml;charset=UTF-8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'><defs><linearGradient id='a' x1='0' x2='1'><stop stop-color='%231d4ed8'/><stop offset='1' stop-color='%237c3aed'/></linearGradient></defs><rect width='800' height='450' fill='url(%23a)'/><circle cx='400' cy='220' r='120' fill='white' opacity='.15'/><circle cx='400' cy='220' r='80' fill='none' stroke='white' stroke-width='12'/><path d='M400 150v85l55 35' fill='none' stroke='white' stroke-width='12' stroke-linecap='round'/><text x='400' y='390' text-anchor='middle' fill='white' font-size='48' font-family='Arial'>GENERAL QUIZ</text></svg>">
 <div class="category-title">🧠 معلومات عامة</div>
 </button>
 
-<!-- دين -->
-<button class="category" onclick="startGame('islamic')">
-<img alt="أسئلة دينية"
-src="data:image/svg+xml;charset=UTF-8,
-<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'>
-<defs><linearGradient id='b' x1='0' x2='1'><stop stop-color='%23065f46'/><stop offset='1' stop-color='%230f9f72'/></linearGradient></defs>
-<rect width='800' height='450' fill='url(%23b)'/>
-<circle cx='400' cy='200' r='85' fill='none' stroke='white' stroke-width='15'/>
-<path d='M400 105a95 95 0 1 0 0 190a75 75 0 1 1 0-190z' fill='white'/>
-<path d='M520 120l12 28 30 3-23 20 7 30-26-16-26 16 7-30-23-20 30-3z' fill='white'/>
-<text x='400' y='390' text-anchor='middle' fill='white' font-size='45' font-family='Arial'>ISLAMIC QUIZ</text>
-</svg>">
+<button class="category" onclick="chooseCategory('islamic')">
+<img src="data:image/svg+xml;charset=UTF-8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'><defs><linearGradient id='b' x1='0' x2='1'><stop stop-color='%23065f46'/><stop offset='1' stop-color='%230f9f72'/></linearGradient></defs><rect width='800' height='450' fill='url(%23b)'/><circle cx='400' cy='200' r='85' fill='none' stroke='white' stroke-width='15'/><path d='M400 105a95 95 0 1 0 0 190a75 75 0 1 1 0-190z' fill='white'/><path d='M520 120l12 28 30 3-23 20 7 30-26-16-26 16 7-30-23-20 30-3z' fill='white'/><text x='400' y='390' text-anchor='middle' fill='white' font-size='45' font-family='Arial'>ISLAMIC QUIZ</text></svg>">
 <div class="category-title">☪️ أسئلة دينية إسلامية</div>
 </button>
 
-<!-- تاريخ -->
-<button class="category" onclick="startGame('history')">
-<img alt="تاريخ"
-src="data:image/svg+xml;charset=UTF-8,
-<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'>
-<defs><linearGradient id='c' x1='0' x2='1'><stop stop-color='%23924f12'/><stop offset='1' stop-color='%23d97706'/></linearGradient></defs>
-<rect width='800' height='450' fill='url(%23c)'/>
-<path d='M170 300h460M210 300V180h380v120M190 180h420l-210-90z' fill='%23fff' opacity='.9'/>
-<path d='M260 180v120M350 180v120M440 180v120M530 180v120' stroke='%23924f12' stroke-width='12'/>
-<text x='400' y='390' text-anchor='middle' fill='white' font-size='52' font-family='Arial'>HISTORY</text>
-</svg>">
+<button class="category" onclick="chooseCategory('history')">
+<img src="data:image/svg+xml;charset=UTF-8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'><defs><linearGradient id='c' x1='0' x2='1'><stop stop-color='%23924f12'/><stop offset='1' stop-color='%23d97706'/></linearGradient></defs><rect width='800' height='450' fill='url(%23c)'/><path d='M170 300h460M210 300V180h380v120M190 180h420l-210-90z' fill='white' opacity='.9'/><path d='M260 180v120M350 180v120M440 180v120M530 180v120' stroke='%23924f12' stroke-width='12'/><text x='400' y='390' text-anchor='middle' fill='white' font-size='52' font-family='Arial'>HISTORY</text></svg>">
 <div class="category-title">🏺 تاريخ</div>
 </button>
 
-<!-- جغرافيا -->
-<button class="category" onclick="startGame('geography')">
-<img alt="جغرافيا"
-src="data:image/svg+xml;charset=UTF-8,
-<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'>
-<defs><linearGradient id='d' x1='0' x2='1'><stop stop-color='%230369a1'/><stop offset='1' stop-color='%2306b6d4'/></linearGradient></defs>
-<rect width='800' height='450' fill='url(%23d)'/>
-<circle cx='400' cy='205' r='115' fill='%2322c55e' stroke='white' stroke-width='10'/>
-<path d='M285 205h230M400 90c-50 55-50 175 0 230M400 90c50 55 50 175 0 230M300 150c60 25 140 25 200 0M300 260c60-25 140-25 200 0' fill='none' stroke='white' stroke-width='7'/>
-<text x='400' y='390' text-anchor='middle' fill='white' font-size='52' font-family='Arial'>GEOGRAPHY</text>
-</svg>">
+<button class="category" onclick="chooseCategory('geography')">
+<img src="data:image/svg+xml;charset=UTF-8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'><defs><linearGradient id='d' x1='0' x2='1'><stop stop-color='%230369a1'/><stop offset='1' stop-color='%2306b6d4'/></linearGradient></defs><rect width='800' height='450' fill='url(%23d)'/><circle cx='400' cy='205' r='115' fill='%2322c55e' stroke='white' stroke-width='10'/><path d='M285 205h230M400 90c-50 55-50 175 0 230M400 90c50 55 50 175 0 230' fill='none' stroke='white' stroke-width='7'/><text x='400' y='390' text-anchor='middle' fill='white' font-size='52' font-family='Arial'>GEOGRAPHY</text></svg>">
 <div class="category-title">🌍 جغرافيا</div>
 </button>
 
-<!-- كرة -->
-<button class="category" onclick="startGame('football')">
-<img alt="كرة القدم"
-src="data:image/svg+xml;charset=UTF-8,
-<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'>
-<defs><linearGradient id='e' x1='0' x2='1'><stop stop-color='%230f766e'/><stop offset='1' stop-color='%2322c55e'/></linearGradient></defs>
-<rect width='800' height='450' fill='url(%23e)'/>
-<circle cx='400' cy='205' r='100' fill='white'/>
-<path d='M400 150l40 30-15 48h-50l-15-48z' fill='%23111827'/>
-<path d='M400 150v-35M440 180l40-25M425 228l25 35M375 228l-25 35M360 180l-40-25' stroke='%23111827' stroke-width='12'/>
-<text x='400' y='390' text-anchor='middle' fill='white' font-size='55' font-family='Arial'>FOOTBALL</text>
-</svg>">
+<button class="category" onclick="chooseCategory('football')">
+<img src="data:image/svg+xml;charset=UTF-8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'><defs><linearGradient id='e' x1='0' x2='1'><stop stop-color='%230f766e'/><stop offset='1' stop-color='%2322c55e'/></linearGradient></defs><rect width='800' height='450' fill='url(%23e)'/><circle cx='400' cy='205' r='100' fill='white'/><path d='M400 150l40 30-15 48h-50l-15-48z' fill='%23111827'/><path d='M400 150v-35M440 180l40-25M425 228l25 35M375 228l-25 35M360 180l-40-25' stroke='%23111827' stroke-width='12'/><text x='400' y='390' text-anchor='middle' fill='white' font-size='55' font-family='Arial'>FOOTBALL</text></svg>">
 <div class="category-title">⚽ كورة</div>
 </button>
 
-<!-- علوم -->
-<button class="category" onclick="startGame('science')">
-<img alt="علوم"
-src="data:image/svg+xml;charset=UTF-8,
-<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'>
-<defs><linearGradient id='f' x1='0' x2='1'><stop stop-color='%237c3aed'/><stop offset='1' stop-color='%23db2777'/></linearGradient></defs>
-<rect width='800' height='450' fill='url(%23f)'/>
-<path d='M350 95h100M375 95v105l-75 130a30 30 0 0 0 25 45h150a30 30 0 0 0 25-45l-75-130V95' fill='none' stroke='white' stroke-width='14'/>
-<path d='M320 285h160' stroke='white' stroke-width='14'/>
-<circle cx='360' cy='260' r='12' fill='white'/>
-<circle cx='430' cy='315' r='14' fill='white'/>
-<text x='400' y='410' text-anchor='middle' fill='white' font-size='55' font-family='Arial'>SCIENCE</text>
-</svg>">
+<button class="category" onclick="chooseCategory('science')">
+<img src="data:image/svg+xml;charset=UTF-8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'><defs><linearGradient id='f' x1='0' x2='1'><stop stop-color='%237c3aed'/><stop offset='1' stop-color='%23db2777'/></linearGradient></defs><rect width='800' height='450' fill='url(%23f)'/><path d='M350 95h100M375 95v105l-75 130a30 30 0 0 0 25 45h150a30 30 0 0 0 25-45l-75-130V95' fill='none' stroke='white' stroke-width='14'/><path d='M320 285h160' stroke='white' stroke-width='14'/><circle cx='360' cy='260' r='12' fill='white'/><circle cx='430' cy='315' r='14' fill='white'/><text x='400' y='410' text-anchor='middle' fill='white' font-size='55' font-family='Arial'>SCIENCE</text></svg>">
 <div class="category-title">🔬 علوم</div>
 </button>
 
-<!-- أفلام -->
-<button class="category" onclick="startGame('movies')">
-<img alt="أفلام ومسلسلات"
-src="data:image/svg+xml;charset=UTF-8,
-<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'>
-<defs><linearGradient id='g' x1='0' x2='1'><stop stop-color='%23b91c1c'/><stop offset='1' stop-color='%23f97316'/></linearGradient></defs>
-<rect width='800' height='450' fill='url(%23g)'/>
-<rect x='220' y='105' width='360' height='230' rx='20' fill='white'/>
-<path d='M220 155h360M270 105l45 50M370 105l45 50M470 105l45 50' stroke='%23b91c1c' stroke-width='15'/>
-<path d='M355 205l100 60-100 60z' fill='%23b91c1c'/>
-<text x='400' y='400' text-anchor='middle' fill='white' font-size='48' font-family='Arial'>EGYPTIAN CINEMA</text>
-</svg>">
+<button class="category" onclick="chooseCategory('movies')">
+<img src="data:image/svg+xml;charset=UTF-8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'><defs><linearGradient id='g' x1='0' x2='1'><stop stop-color='%23b91c1c'/><stop offset='1' stop-color='%23f97316'/></linearGradient></defs><rect width='800' height='450' fill='url(%23g)'/><rect x='220' y='105' width='360' height='230' rx='20' fill='white'/><path d='M220 155h360M270 105l45 50M370 105l45 50M470 105l45 50' stroke='%23b91c1c' stroke-width='15'/><path d='M355 205l100 60-100 60z' fill='%23b91c1c'/><text x='400' y='400' text-anchor='middle' fill='white' font-size='48' font-family='Arial'>EGYPTIAN CINEMA</text></svg>">
 <div class="category-title">🎬 أفلام ومسلسلات مصرية</div>
 </button>
 
-<!-- تكنولوجيا -->
-<button class="category" onclick="startGame('technology')">
-<img alt="تكنولوجيا"
-src="data:image/svg+xml;charset=UTF-8,
-<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'>
-<defs><linearGradient id='h' x1='0' x2='1'><stop stop-color='%230f172a'/><stop offset='1' stop-color='%230256d1'/></linearGradient></defs>
-<rect width='800' height='450' fill='url(%23h)'/>
-<rect x='220' y='85' width='360' height='220' rx='15' fill='none' stroke='white' stroke-width='14'/>
-<path d='M150 350h500M320 350l20-45h120l20 45' fill='none' stroke='white' stroke-width='14'/>
-<path d='M315 190l45 45 125-120' fill='none' stroke='%2322c55e' stroke-width='18'/>
-<text x='400' y='410' text-anchor='middle' fill='white' font-size='55' font-family='Arial'>TECHNOLOGY</text>
-</svg>">
+<button class="category" onclick="chooseCategory('technology')">
+<img src="data:image/svg+xml;charset=UTF-8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'><defs><linearGradient id='h' x1='0' x2='1'><stop stop-color='%230f172a'/><stop offset='1' stop-color='%230256d1'/></linearGradient></defs><rect width='800' height='450' fill='url(%23h)'/><rect x='220' y='85' width='360' height='220' rx='15' fill='none' stroke='white' stroke-width='14'/><path d='M150 350h500M320 350l20-45h120l20 45' fill='none' stroke='white' stroke-width='14'/><path d='M315 190l45 45 125-120' fill='none' stroke='%2322c55e' stroke-width='18'/><text x='400' y='410' text-anchor='middle' fill='white' font-size='55' font-family='Arial'>TECHNOLOGY</text></svg>">
 <div class="category-title">💻 تكنولوجيا</div>
 </button>
 
-<!-- لغة -->
-<button class="category" onclick="startGame('literature')">
-<img alt="لغة وأدب"
-src="data:image/svg+xml;charset=UTF-8,
-<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'>
-<defs><linearGradient id='i' x1='0' x2='1'><stop stop-color='%237036aa'/><stop offset='1' stop-color='%23a855f7'/></linearGradient></defs>
-<rect width='800' height='450' fill='url(%23i)'/>
-<path d='M120 105h250a35 35 0 0 1 30 30v225H155a35 35 0 0 0-35 35z' fill='white'/>
-<path d='M680 105H430a35 35 0 0 0-30 30v225h245a35 35 0 0 1 35 35z' fill='white'/>
-<path d='M400 135v225' stroke='%237036aa' stroke-width='10'/>
-<text x='400' y='410' text-anchor='middle' fill='white' font-size='55' font-family='Arial'>LANGUAGE</text>
-</svg>">
+<button class="category" onclick="chooseCategory('literature')">
+<img src="data:image/svg+xml;charset=UTF-8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'><defs><linearGradient id='i' x1='0' x2='1'><stop stop-color='%237036aa'/><stop offset='1' stop-color='%23a855f7'/></linearGradient></defs><rect width='800' height='450' fill='url(%23i)'/><path d='M120 105h250a35 35 0 0 1 30 30v225H155a35 35 0 0 0-35 35z' fill='white'/><path d='M680 105H430a35 35 0 0 0-30 30v225h245a35 35 0 0 1 35 35z' fill='white'/><path d='M400 135v225' stroke='%237036aa' stroke-width='10'/><text x='400' y='410' text-anchor='middle' fill='white' font-size='55' font-family='Arial'>LANGUAGE</text></svg>">
 <div class="category-title">📚 لغة وأدب</div>
 </button>
 
@@ -351,7 +390,37 @@ src="data:image/svg+xml;charset=UTF-8,
 </div>
 
 
-<!-- ================= شاشة الأسئلة ================= -->
+<!-- ================= اختيار المستوى ================= -->
+
+<div id="levels" class="screen">
+
+<h2 class="level-title">اختار مستوى الصعوبة 🎯</h2>
+
+<div class="levels">
+
+<button class="level easy" onclick="startGame('easy')">
+🟢 سهل
+<small>20 سؤال • 10 نقاط للسؤال</small>
+</button>
+
+<button class="level medium" onclick="startGame('medium')">
+🟡 متوسط
+<small>20 سؤال • 20 نقطة للسؤال</small>
+</button>
+
+<button class="level hard" onclick="startGame('hard')">
+🔴 صعب
+<small>10 أسئلة • 30 نقطة للسؤال</small>
+</button>
+
+</div>
+
+<button class="back" onclick="goHome()">← رجوع للأقسام</button>
+
+</div>
+
+
+<!-- ================= اللعبة ================= -->
 
 <div id="game" class="screen">
 
@@ -370,6 +439,8 @@ src="data:image/svg+xml;charset=UTF-8,
 </div>
 
 <div class="question-card">
+
+<div id="levelBadge" class="level-badge"></div>
 
 <div class="timer">
 ⏱️ <span id="timer">20</span>
@@ -390,7 +461,7 @@ src="data:image/svg+xml;charset=UTF-8,
 
 <div class="result-card">
 
-<h2>🎉 خلصت التحدي!</h2>
+<h2>🎉 خلصت المستوى!</h2>
 
 <div class="final-score">
 <span id="finalScore">0</span>
@@ -400,9 +471,17 @@ src="data:image/svg+xml;charset=UTF-8,
 
 <br>
 
-<button class="main-btn" onclick="restartGame()">🔄 العب تاني</button>
+<button class="main-btn" onclick="restartGame()">
+🔄 العب تاني
+</button>
 
-<button class="main-btn" onclick="goHome()">🏠 الأقسام</button>
+<button class="main-btn" onclick="chooseAnotherLevel()">
+🎯 مستوى آخر
+</button>
+
+<button class="main-btn" onclick="goHome()">
+🏠 الأقسام
+</button>
 
 </div>
 
@@ -413,137 +492,621 @@ src="data:image/svg+xml;charset=UTF-8,
 
 <script>
 
-/* =========================
-   الأسئلة
-========================= */
+/*
+====================================================
+بنك الأسئلة
+كل سؤال بالشكل:
+[السؤال, [الاختيارات], رقم الإجابة الصحيحة]
+====================================================
+*/
 
-const questions={
+const bank={
 
-general:[
-["ما هي عاصمة مصر؟",["القاهرة","الإسكندرية","الأقصر","أسوان"],0],
-["كم عدد أيام الأسبوع؟",["5","6","7","8"],2],
-["ما أكبر محيط في العالم؟",["الأطلسي","الهندي","الهادئ","المتجمد"],2],
-["كم عدد قارات العالم؟",["5","6","7","8"],2],
-["ما أسرع حيوان بري؟",["الأسد","الفهد","النمر","الحصان"],1],
+general:{
+
+easy:[
+["ما عاصمة مصر؟",["القاهرة","الإسكندرية","الأقصر","أسوان"],0],
+["كم يومًا في الأسبوع؟",["5","6","7","8"],2],
 ["كم شهرًا في السنة؟",["10","11","12","13"],2],
+["ما لون السماء في يوم صافٍ؟",["أزرق","أخضر","أحمر","أسود"],0],
+["كم عدد أصابع اليد الواحدة؟",["4","5","6","7"],1],
 ["ما أكبر كوكب في المجموعة الشمسية؟",["الأرض","المريخ","المشتري","عطارد"],2],
-["ما الحيوان المعروف بسفينة الصحراء؟",["الحصان","الجمل","الفيل","الماعز"],1],
-["كم عدد ألوان قوس قزح؟",["5","6","7","8"],2],
-["ما العملة الرسمية في مصر؟",["الدينار","الجنيه","الريال","الدرهم"],1]
+["ما الحيوان المعروف بسفينة الصحراء؟",["الجمل","الحصان","الفيل","الأسد"],0],
+["ما العملة الرسمية في مصر؟",["الجنيه","الدينار","الريال","الدرهم"],0],
+["كم دقيقة في الساعة؟",["30","45","60","90"],2],
+["ما لون الموز غالبًا عند نضجه؟",["أزرق","أصفر","أسود","بنفسجي"],1],
+["ما عاصمة السعودية؟",["الرياض","جدة","مكة","الدمام"],0],
+["كم فصلًا في السنة؟",["2","3","4","5"],2],
+["ما الحيوان الذي يقول مياو؟",["الكلب","القطة","الحصان","البقرة"],1],
+["ما عاصمة فرنسا؟",["باريس","روما","مدريد","برلين"],0],
+["كم ساعة في اليوم؟",["12","18","24","30"],2],
+["ما أكبر قارة؟",["آسيا","أوروبا","أفريقيا","أستراليا"],0],
+["ما أقرب نجم إلى الأرض؟",["القمر","الشمس","المريخ","النجم القطبي"],1],
+["ما اسم كوكبنا؟",["المريخ","الأرض","الزهرة","زحل"],1],
+["ما أكبر محيط؟",["الأطلسي","الهندي","الهادئ","المتجمد"],2],
+["كم يومًا في السنة العادية؟",["300","365","400","500"],1]
 ],
 
-islamic:[
+medium:[
+["كم عدد ألوان قوس قزح؟",["5","6","7","8"],2],
+["ما عاصمة اليابان؟",["طوكيو","بكين","سيول","بانكوك"],0],
+["ما الغاز الأكثر وفرة في الغلاف الجوي للأرض؟",["الأكسجين","النيتروجين","الهيدروجين","ثاني أكسيد الكربون"],1],
+["ما أطول نهر في أفريقيا؟",["النيل","الكونغو","النيجر","الزامبيزي"],0],
+["ما أكبر دولة في العالم من حيث المساحة؟",["الصين","كندا","روسيا","أمريكا"],2],
+["ما اسم العملة البريطانية؟",["اليورو","الدولار","الجنيه الإسترليني","الفرنك"],2],
+["كم عدد عظام جسم الإنسان البالغ تقريبًا؟",["106","206","306","406"],1],
+["ما الكوكب المعروف بالكوكب الأحمر؟",["المريخ","الزهرة","عطارد","نبتون"],0],
+["ما اللغة الرسمية في البرازيل؟",["الإسبانية","البرتغالية","الإنجليزية","الفرنسية"],1],
+["ما البحر الذي يفصل أفريقيا عن أوروبا؟",["البحر الأحمر","البحر المتوسط","بحر العرب","بحر قزوين"],1],
+["من رسم لوحة الموناليزا؟",["بيكاسو","ليوناردو دا فينشي","فان جوخ","رامبرانت"],1],
+["ما أسرع حيوان بري؟",["الأسد","الفهد","النمر","الغزال"],1],
+["ما عاصمة أستراليا؟",["سيدني","ملبورن","كانبيرا","بيرث"],2],
+["ما أكبر عضو في جسم الإنسان؟",["القلب","الجلد","الكبد","الرئة"],1],
+["ما الوحدة الأساسية لقياس شدة التيار الكهربائي؟",["الفولت","الأوم","الأمبير","الواط"],2],
+["ما القارة التي تضم أكبر عدد من الدول؟",["أفريقيا","آسيا","أوروبا","أمريكا الجنوبية"],0],
+["ما اسم العلم الذي يدرس الزلازل؟",["الأحياء","علم الزلازل","الفلك","الكيمياء"],1],
+["من اخترع الهاتف بشكل مشهور؟",["ألكسندر غراهام بيل","نيوتن","أينشتاين","إديسون"],0],
+["ما المعدن السائل في درجة حرارة الغرفة؟",["الحديد","الزئبق","النحاس","الألومنيوم"],1],
+["ما أصغر قارة من حيث المساحة؟",["أفريقيا","أوروبا","أستراليا","آسيا"],2]
+],
+
+hard:[
+["ما العنصر الكيميائي الذي رمزه W؟",["التنجستن","القصدير","الفضة","الزنك"],0],
+["ما أعمق نقطة معروفة في محيطات العالم؟",["خندق ماريانا","خندق تونغا","خندق اليابان","خندق بورتوريكو"],0],
+["ما الوحدة الفلكية تستخدم أساسًا لقياس ماذا؟",["الزمن","المسافات داخل النظام الشمسي","الكتلة","الحرارة"],1],
+["ما اسم أكبر قمر لكوكب زحل؟",["تيتان","أوروبا","جانيميد","تريتون"],0],
+["ما الدولة التي تقع فيها مدينة ماتشو بيتشو؟",["بيرو","تشيلي","بوليفيا","الإكوادور"],0],
+["ما اسم الظاهرة التي يحدث فيها انحناء الضوء بسبب الجاذبية؟",["العدسة الجاذبية","الانكسار فقط","التشتت","الانعكاس"],0],
+["ما أصغر عدد أولي؟",["0","1","2","3"],2],
+["ما اسم الطبقة التي تحتوي معظم الأوزون الجوي؟",["التروبوسفير","الستراتوسفير","الميزوسفير","الإكسوسفير"],1],
+["ما العنصر الأكثر وفرة في الكون؟",["الأكسجين","الهيدروجين","الكربون","الحديد"],1],
+["ما اسم أكبر صحراء حارة في العالم؟",["جوبي","الصحراء الكبرى","كالاهاري","أتاكاما"],1]
+]
+
+},
+
+
+islamic:{
+
+easy:[
 ["كم عدد أركان الإسلام؟",["3","4","5","6"],2],
-["كم عدد الصلوات المفروضة؟",["3","4","5","6"],2],
+["كم عدد الصلوات المفروضة في اليوم والليلة؟",["3","4","5","6"],2],
 ["ما أول سورة في المصحف؟",["الفاتحة","البقرة","الإخلاص","الناس"],0],
 ["كم جزءًا في القرآن الكريم؟",["20","25","30","40"],2],
 ["ما أطول سورة في القرآن؟",["آل عمران","النساء","البقرة","المائدة"],2],
 ["ما أقصر سورة في القرآن؟",["العصر","الكوثر","الإخلاص","الفلق"],1],
 ["في أي شهر يصوم المسلمون؟",["شعبان","رمضان","شوال","محرم"],1],
-["إلى أي مدينة هاجر النبي ﷺ؟",["الطائف","المدينة المنورة","دمشق","القدس"],1],
 ["كم عدد أركان الإيمان؟",["4","5","6","7"],2],
-["ما اسم الليلة التي هي خير من ألف شهر؟",["ليلة الجمعة","ليلة القدر","ليلة النصف","ليلة الإسراء"],1]
+["ما اسم الليلة التي هي خير من ألف شهر؟",["ليلة الجمعة","ليلة القدر","ليلة النصف","ليلة الإسراء"],1],
+["ما قبلة المسلمين؟",["المسجد الأقصى","الكعبة","مسجد قباء","المسجد النبوي"],1],
+["من خاتم الأنبياء؟",["موسى","عيسى","محمد ﷺ","إبراهيم"],2],
+["ما اسم كتاب المسلمين؟",["الإنجيل","التوراة","القرآن الكريم","الزبور"],2],
+["كم مرة يحج المسلم إذا استطاع؟",["مرة","مرتين","ثلاثًا","كل عام فرضًا"],0],
+["ما الصلاة التي تكون بعد غروب الشمس؟",["الفجر","الظهر","المغرب","العصر"],2],
+["ما الصلاة التي تكون قبل طلوع الشمس؟",["الفجر","العشاء","الظهر","المغرب"],0],
+["ما الشهر الذي يأتي بعد رمضان؟",["شوال","رجب","شعبان","محرم"],0],
+["ما أول شهر في السنة الهجرية؟",["محرم","صفر","رجب","رمضان"],0],
+["ما آخر سورة في ترتيب المصحف؟",["الفلق","الناس","الإخلاص","النصر"],1],
+["ما السورة التي تبدأ بـ الحمد لله رب العالمين؟",["الفاتحة","البقرة","الكهف","الرحمن"],0],
+["كم ركعة لصلاة الفجر فرضًا؟",["1","2","3","4"],1]
 ],
 
-history:[
-["من بنى الأهرامات؟",["الرومان","المصريون القدماء","اليونان","الفرس"],1],
-["من أول الخلفاء الراشدين؟",["عمر","علي","أبو بكر","عثمان"],2],
-["من قاد المسلمين في معركة حطين؟",["صلاح الدين","خالد بن الوليد","عمرو بن العاص","طارق بن زياد"],0],
-["أين توجد الأهرامات الشهيرة؟",["الأقصر","أسوان","الجيزة","الإسكندرية"],2],
-["من قاد ثورة 1919 في مصر؟",["سعد زغلول","محمد علي","أحمد عرابي","مصطفى كامل"],0],
+medium:[
+["إلى أي مدينة هاجر النبي ﷺ؟",["الطائف","المدينة المنورة","دمشق","القدس"],1],
+["من أول الخلفاء الراشدين؟",["عمر","أبو بكر","عثمان","علي"],1],
+["من ثاني الخلفاء الراشدين؟",["علي","عثمان","عمر بن الخطاب","أبو بكر"],2],
+["من ثالث الخلفاء الراشدين؟",["عثمان بن عفان","عمر","علي","أبو بكر"],0],
+["من رابع الخلفاء الراشدين؟",["عمر","علي بن أبي طالب","عثمان","أبو بكر"],1],
+["ما اسم الغار الذي كان فيه النبي ﷺ وأبو بكر أثناء الهجرة؟",["حراء","ثور","أحد","النور"],1],
+["ما أول مسجد بُني في الإسلام؟",["المسجد النبوي","مسجد قباء","المسجد الحرام","المسجد الأقصى"],1],
+["ما السورة التي لا تبدأ بالبسملة؟",["التوبة","يونس","الأنفال","هود"],0],
+["في أي شهر هجري يؤدي المسلمون الحج؟",["رمضان","ذو الحجة","محرم","شوال"],1],
+["ما اسم أم المؤمنين التي روى عنها كثير من الأحاديث؟",["عائشة رضي الله عنها","فاطمة","صفية","زينب"],0],
+["ما أول ما يحاسب عليه العبد من عمله يوم القيامة؟",["الصيام","الصلاة","الزكاة","الحج"],1],
+["ما اسم الصلاة التي تصلى عند كسوف الشمس؟",["الاستسقاء","الكسوف","التراويح","الوتر"],1],
+["ما السورة التي تُسمى أم الكتاب؟",["الفاتحة","البقرة","الناس","يس"],0],
+["ما اسم ليلة نزول القرآن؟",["ليلة القدر","ليلة الجمعة","ليلة النصف","ليلة عرفة"],0],
+["ما اسم الصلاة التي تؤدى في رمضان جماعة ليلًا؟",["التراويح","الضحى","الاستسقاء","الكسوف"],0],
+["ما الركن الذي يجب فيه إخراج مال مخصوص لمستحقيه؟",["الصلاة","الزكاة","الصوم","الحج"],1],
+["ما اسم اليوم الذي يقف فيه الحجاج بعرفة؟",["يوم عرفة","يوم النحر","يوم الجمعة","يوم عاشوراء"],0],
+["ما شهر الصيام؟",["شعبان","رمضان","شوال","ذو القعدة"],1],
+["ما اسم الصلاة التي تختم بها صلاة الليل؟",["الوتر","الضحى","العصر","الكسوف"],0],
+["ما اسم الماء المبارك في مكة؟",["زمزم","النيل","الكوثر","الفرات"],0]
+],
+
+hard:[
+["ما السورة التي تُسمى قلب القرآن في بعض كتب الفضائل؟",["يس","البقرة","الرحمن","الملك"],0],
+["ما السورة التي وردت فيها آية الكرسي؟",["البقرة","آل عمران","النساء","المائدة"],0],
+["كم مرة ورد اسم محمد ﷺ صريحًا في القرآن؟",["3","4","5","6"],1],
+["ما أول ما نزل من القرآن على المشهور؟",["اقرأ باسم ربك","الحمد لله","يا أيها المدثر","والضحى"],0],
+["ما اسم الصحابي الملقب بسيف الله المسلول؟",["خالد بن الوليد","سعد بن أبي وقاص","أبو عبيدة","الزبير"],0],
+["ما اسم الصحابي الذي لقب بذي النورين؟",["علي","عثمان بن عفان","عمر","أبو بكر"],1],
+["ما اسم الصحابي الملقب بالفاروق؟",["عمر بن الخطاب","أبو بكر","عثمان","علي"],0],
+["ما السورة التي تسمى سورة بني إسرائيل؟",["الإسراء","الكهف","مريم","طه"],0],
+["ما اسم الغزوة التي وقعت في السنة الثانية للهجرة؟",["بدر","أحد","الخندق","تبوك"],0],
+["ما اسم الصحابي الذي كان مؤذن النبي ﷺ؟",["بلال بن رباح","خالد بن الوليد","سلمان الفارسي","معاذ بن جبل"],0]
+]
+
+},
+
+
+history:{
+
+easy:[
+["من بنى الأهرامات؟",["المصريون القدماء","الرومان","اليونان","الفرس"],0],
 ["من بنى مدينة الإسكندرية؟",["الإسكندر الأكبر","نابليون","صلاح الدين","قيصر"],0],
-["ما الكتابة التي اشتهر بها المصريون القدماء؟",["الهيروغليفية","اللاتينية","اليونانية","الفارسية"],0],
+["أين توجد أهرامات الجيزة؟",["الجيزة","الأقصر","أسوان","الإسكندرية"],0],
+["ما الكتابة المصرية القديمة المشهورة؟",["الهيروغليفية","اللاتينية","العربية","الفارسية"],0],
+["من قاد ثورة 1919؟",["سعد زغلول","محمد علي","أحمد عرابي","مصطفى كامل"],0],
+["من هو أول الخلفاء الراشدين؟",["أبو بكر","عمر","عثمان","علي"],0],
+["من قاد المسلمين في حطين؟",["صلاح الدين","خالد بن الوليد","عمرو بن العاص","طارق بن زياد"],0],
 ["أين قامت الحضارة المصرية القديمة؟",["وادي النيل","أوروبا","أمريكا","أستراليا"],0],
+["ما عاصمة الدولة المصرية القديمة في فترات مبكرة؟",["منف","روما","بغداد","دمشق"],0],
+["من كان فرعونًا في قصة موسى عليه السلام؟",["فرعون","قيصر","كسرى","النجاشي"],0],
+["ما الحضارة التي بنت معابد الأقصر؟",["المصرية القديمة","الرومانية","الفارسية","العثمانية"],0],
+["ما اسم أشهر نهر في مصر القديمة؟",["النيل","الفرات","دجلة","الأمازون"],0],
+["من هو ثاني الخلفاء الراشدين؟",["عمر","أبو بكر","عثمان","علي"],0],
+["من هو ثالث الخلفاء الراشدين؟",["عثمان","عمر","علي","أبو بكر"],0],
+["من هو رابع الخلفاء الراشدين؟",["علي","عمر","عثمان","أبو بكر"],0],
+["ما اسم أشهر أهرامات الجيزة؟",["خوفو","رمسيس","توت عنخ آمون","تحتمس"],0],
+["ما الحضارة التي استخدمت الكتابة المسمارية؟",["حضارات بلاد الرافدين","المصرية فقط","الرومانية","الإغريقية"],0],
+["أين يقع معبد أبو سمبل؟",["أسوان","القاهرة","الجيزة","الإسكندرية"],0],
+["ما المدينة التي كانت عاصمة مصر في العصر الفاطمي؟",["القاهرة","الإسكندرية","الأقصر","أسوان"],0],
+["من بنى قلعة صلاح الدين في القاهرة؟",["صلاح الدين الأيوبي","محمد علي","عمرو بن العاص","نابليون"],0]
+],
+
+medium:[
 ["من مؤسس الدولة الأموية؟",["معاوية بن أبي سفيان","هارون الرشيد","صلاح الدين","عمرو بن العاص"],0],
-["ما الحضارة التي بنت المعابد الضخمة في الأقصر؟",["المصرية القديمة","الرومانية","الفارسية","العثمانية"],0]
+["من مؤسس الدولة العباسية؟",["أبو العباس السفاح","صلاح الدين","معاوية","هارون الرشيد"],0],
+["من قاد الحملة الفرنسية على مصر؟",["نابليون بونابرت","هتلر","الإسكندر","قيصر"],0],
+["في أي عام بدأت الحملة الفرنسية على مصر؟",["1798","1805","1882","1919"],0],
+["من أنشأ جيشًا حديثًا في مصر في عهد محمد علي؟",["محمد علي باشا","سعد زغلول","أحمد عرابي","الخديو إسماعيل"],0],
+["من قاد الثورة العرابية؟",["أحمد عرابي","سعد زغلول","محمد علي","مصطفى كامل"],0],
+["متى بدأت ثورة 1919؟",["1919","1905","1923","1952"],0],
+["من قاد ثورة يوليو 1952 سياسيًا بعد نجاحها؟",["جمال عبد الناصر","سعد زغلول","محمد علي","الخديو إسماعيل"],0],
+["ما اسم أول رئيس لمصر بعد إعلان الجمهورية عام 1953؟",["محمد نجيب","جمال عبد الناصر","أنور السادات","حسني مبارك"],0],
+["من أصبح رئيسًا لمصر بعد محمد نجيب؟",["جمال عبد الناصر","أنور السادات","حسني مبارك","السيسي"],0],
+["ما اسم الحرب التي وقعت عام 1973 بين مصر وإسرائيل؟",["حرب أكتوبر","حرب السويس","حرب الخليج","حرب الاستقلال"],0],
+["في أي عام وقعت حرب أكتوبر؟",["1973","1967","1956","1982"],0],
+["ما اسم قناة ربطت البحر المتوسط بالبحر الأحمر؟",["قناة السويس","قناة بنما","قناة كيل","قناة كورنث"],0],
+["من افتتح قناة السويس للملاحة عام 1869؟",["الخديو إسماعيل","محمد علي","عباس الأول","سعد زغلول"],0],
+["ما اسم المعركة التي انتصر فيها صلاح الدين على الصليبيين؟",["حطين","بدر","اليرموك","القادسية"],0],
+["من فتح مصر في العصر الإسلامي؟",["عمرو بن العاص","خالد بن الوليد","صلاح الدين","سعد بن أبي وقاص"],0],
+["من أسس مدينة القاهرة الفاطمية؟",["جوهر الصقلي","صلاح الدين","عمرو بن العاص","محمد علي"],0],
+["ما اسم أول عاصمة إسلامية لمصر؟",["الفسطاط","القاهرة","الإسكندرية","منف"],0],
+["من بنى جامع الأزهر؟",["الفاطميون","الأمويون","العباسيون","الرومان"],0],
+["ما الدولة التي حكمت مصر قبل الفاطميين؟",["الإخشيديون","العثمانيون","المماليك","الرومان"],0]
 ],
 
-geography:[
-["ما أكبر قارة في العالم؟",["أفريقيا","أوروبا","آسيا","أستراليا"],2],
-["ما أطول نهر في أفريقيا؟",["النيل","الأمازون","الدانوب","الفرات"],0],
-["ما عاصمة السعودية؟",["جدة","الرياض","مكة","الدمام"],1],
-["ما عاصمة فرنسا؟",["روما","مدريد","باريس","برلين"],2],
-["في أي قارة تقع مصر؟",["آسيا","أفريقيا","أوروبا","أمريكا"],1],
-["ما البحر الذي يفصل أفريقيا عن أوروبا؟",["الأحمر","المتوسط","العربي","قزوين"],1],
+hard:[
+["ما اسم معركة انتهت بسقوط الدولة الأموية في المشرق؟",["الزاب","حطين","القادسية","عين جالوت"],0],
+["من آخر خلفاء بني أمية في دمشق؟",["مروان بن محمد","معاوية","عبد الملك","الوليد"],0],
+["من مؤسس الدولة الأيوبية؟",["صلاح الدين الأيوبي","نور الدين زنكي","قطز","بيبرس"],0],
+["من هزم المغول في عين جالوت؟",["المماليك","الرومان","العباسيون","العثمانيون"],0],
+["من قاد المماليك في عين جالوت؟",["سيف الدين قطز","بيبرس","صلاح الدين","قلاوون"],0],
+["ما اسم القائد المملوكي الذي تولى بعد قطز؟",["بيبرس","قلاوون","برقوق","طومان باي"],0],
+["ما اسم آخر سلاطين المماليك في مصر قبل العثمانيين؟",["طومان باي","قطز","بيبرس","قلاوون"],0],
+["من فتح القسطنطينية عام 1453؟",["محمد الفاتح","سليم الأول","صلاح الدين","بايزيد"],0],
+["في أي عام دخل العثمانيون مصر؟",["1517","1453","1258","1798"],0],
+["من قاد المقاومة المصرية ضد الاحتلال البريطاني في ثورة 1919؟",["سعد زغلول","محمد علي","قطز","صلاح الدين"],0]
+]
+
+},
+
+
+geography:{
+
+easy:[
+["ما أكبر قارة؟",["آسيا","أفريقيا","أوروبا","أستراليا"],0],
+["ما أطول نهر في أفريقيا؟",["النيل","الكونغو","النيجر","الزامبيزي"],0],
+["ما عاصمة مصر؟",["القاهرة","الإسكندرية","أسوان","الأقصر"],0],
+["ما عاصمة السعودية؟",["الرياض","جدة","مكة","الدمام"],0],
+["ما عاصمة فرنسا؟",["باريس","روما","مدريد","برلين"],0],
 ["ما عاصمة اليابان؟",["طوكيو","بكين","سيول","بانكوك"],0],
-["ما أكبر دولة في العالم مساحة؟",["الصين","كندا","روسيا","أمريكا"],2],
-["ما عاصمة إيطاليا؟",["ميلانو","روما","نابولي","تورينو"],1],
-["في أي قارة يقع نهر الأمازون؟",["أفريقيا","آسيا","أوروبا","أمريكا الجنوبية"],3]
+["في أي قارة تقع مصر؟",["أفريقيا","آسيا","أوروبا","أمريكا"],0],
+["ما البحر بين أفريقيا وأوروبا؟",["المتوسط","الأحمر","العربي","قزوين"],0],
+["ما أكبر محيط؟",["الهادئ","الأطلسي","الهندي","المتجمد"],0],
+["ما أكبر دولة مساحة؟",["روسيا","الصين","كندا","أمريكا"],0],
+["ما عاصمة إيطاليا؟",["روما","ميلانو","نابولي","تورينو"],0],
+["ما عاصمة ألمانيا؟",["برلين","ميونيخ","هامبورغ","فرانكفورت"],0],
+["ما عاصمة إسبانيا؟",["مدريد","برشلونة","إشبيلية","فالنسيا"],0],
+["ما عاصمة الصين؟",["بكين","شنغهاي","هونغ كونغ","نانجينغ"],0],
+["ما عاصمة الأردن؟",["عمّان","العقبة","الزرقاء","إربد"],0],
+["ما عاصمة لبنان؟",["بيروت","طرابلس","صيدا","صور"],0],
+["ما عاصمة المغرب؟",["الرباط","الدار البيضاء","مراكش","طنجة"],0],
+["ما عاصمة الجزائر؟",["الجزائر","وهران","قسنطينة","عنابة"],0],
+["ما عاصمة تونس؟",["تونس","صفاقس","سوسة","بنزرت"],0],
+["ما عاصمة السودان؟",["الخرطوم","بورتسودان","أم درمان","كسلا"],0]
 ],
 
-football:[
-["كم لاعبًا يبدأ بهم الفريق المباراة داخل الملعب؟",["9","10","11","12"],2],
-["من فاز بكأس العالم 2022؟",["فرنسا","الأرجنتين","البرازيل","ألمانيا"],1],
-["كم دقيقة تستغرق المباراة الأصلية؟",["60","80","90","100"],2],
-["من اللاعب الذي يُسمح له باستخدام يديه داخل منطقة جزائه؟",["المهاجم","المدافع","حارس المرمى","الجناح"],2],
-["كم شوطًا في مباراة كرة القدم؟",["1","2","3","4"],1],
+medium:[
+["ما عاصمة أستراليا؟",["كانبيرا","سيدني","ملبورن","بيرث"],0],
+["ما عاصمة كندا؟",["أوتاوا","تورنتو","مونتريال","فانكوفر"],0],
+["ما عاصمة البرازيل؟",["برازيليا","ريو","ساو باولو","سلفادور"],0],
+["ما عاصمة تركيا؟",["أنقرة","إسطنبول","إزمير","بورصة"],0],
+["ما عاصمة سويسرا؟",["برن","زيورخ","جنيف","لوزان"],0],
+["ما عاصمة النرويج؟",["أوسلو","بيرغن","تروندهايم","ستافنجر"],0],
+["ما عاصمة السويد؟",["ستوكهولم","غوتنبرغ","مالمو","أوبسالا"],0],
+["ما عاصمة فنلندا؟",["هلسنكي","توركو","تامبيري","أولو"],0],
+["ما عاصمة البرتغال؟",["لشبونة","بورتو","براغا","فارو"],0],
+["ما عاصمة اليونان؟",["أثينا","سالونيك","باتراس","لاريسا"],0],
+["ما أطول سلسلة جبال في العالم فوق سطح البحر؟",["الأنديز","الهيمالايا","الألب","الأطلس"],0],
+["ما أعلى جبل في العالم؟",["إيفرست","كيليمنجارو","مون بلان","إلبروس"],0],
+["في أي قارة تقع جبال الأنديز؟",["أمريكا الجنوبية","أفريقيا","آسيا","أوروبا"],0],
+["في أي قارة تقع جبال الهيمالايا؟",["آسيا","أوروبا","أفريقيا","أمريكا"],0],
+["ما أكبر جزيرة في العالم؟",["جرينلاند","مدغشقر","بورنيو","اليابان"],0],
+["ما البحر الذي يقع بين السعودية وأفريقيا؟",["البحر الأحمر","المتوسط","العربي","قزوين"],0],
+["ما المضيق الذي يفصل آسيا عن أمريكا الشمالية؟",["بيرينغ","جبل طارق","هرمز","البوسفور"],0],
+["ما القارة التي لا توجد فيها دولة دائمة السكان؟",["أنتاركتيكا","أفريقيا","آسيا","أوروبا"],0],
+["ما الدولة التي تشتهر بشكلها الطويل على الساحل الغربي لأمريكا الجنوبية؟",["تشيلي","البرازيل","بيرو","الأرجنتين"],0],
+["ما النهر الذي يمر في باريس؟",["السين","التايمز","الراين","الدانوب"],0]
+],
+
+hard:[
+["ما أعمق بحيرة في العالم؟",["بايكال","فيكتوريا","سوبيريور","تنغانيقا"],0],
+["ما أعلى شلالات في العالم؟",["شلالات آنجل","نياجرا","فيكتوريا","إغوازو"],0],
+["ما أكبر صحراء في العالم من حيث المساحة؟",["أنتاركتيكا","الصحراء الكبرى","جوبي","كالاهاري"],0],
+["ما أعمق نقطة في المحيطات؟",["تشالنجر ديب","بحر العرب","خندق اليابان","خندق بورتوريكو"],0],
+["ما الدولة التي تضم جبل كليمنجارو؟",["تنزانيا","كينيا","أوغندا","إثيوبيا"],0],
+["ما النهر الذي يمر بمدينة بودابست؟",["الدانوب","الراين","السين","الفولغا"],0],
+["ما أكبر بحيرة مياه عذبة من حيث المساحة السطحية؟",["سوبيريور","بايكال","فيكتوريا","هuron"],0],
+["ما الدولة التي تقع فيها صحراء أتاكاما؟",["تشيلي","بيرو","الأرجنتين","بوليفيا"],0],
+["ما المضيق الذي يربط البحر المتوسط بالمحيط الأطلسي؟",["جبل طارق","هرمز","باب المندب","البوسفور"],0],
+["ما النهر الذي يصب في البحر الأسود ويمر بعدة دول أوروبية؟",["الدانوب","النيل","الأمازون","الغانج"],0]
+]
+
+},
+
+
+football:{
+
+easy:[
+["كم لاعبًا يبدأ بهم الفريق داخل الملعب؟",["9","10","11","12"],2],
+["كم شوطًا في المباراة؟",["1","2","3","4"],1],
+["كم دقيقة للمباراة الأصلية؟",["60","80","90","120"],2],
 ["ما لون بطاقة الطرد؟",["الصفراء","الحمراء","الخضراء","الزرقاء"],1],
+["من يحرس المرمى؟",["المهاجم","الحارس","الجناح","المدرب"],1],
 ["كم نقطة للفوز في نظام الثلاث نقاط؟",["1","2","3","4"],2],
-["من ينفذ ركلة الجزاء؟",["أي لاعب من الفريق","الحكم","حارس المرمى فقط","المدرب"],0],
-["ما اسم البطولة العالمية للمنتخبات؟",["دوري الأبطال","كأس العالم","الدوري الأوروبي","كأس السوبر"],1],
-["ما المركز الذي يحرس المرمى؟",["المهاجم","الجناح","حارس المرمى","المدافع"],2]
+["ما اسم البطولة العالمية للمنتخبات؟",["كأس العالم","دوري الأبطال","الدوري الأوروبي","كأس السوبر"],0],
+["ما الركلة من علامة الجزاء؟",["ركنية","جزاء","تماس","حرة"],1],
+["ما اسم ضربة إخراج الكرة من جانب الملعب؟",["رمية تماس","ركنية","جزاء","ركلة مرمى"],0],
+["ما اللون الشائع لقميص الحكم؟",["أسود","أبيض فقط","أخضر فقط","أحمر فقط"],0],
+["من يستخدم يديه داخل منطقة جزائه؟",["المهاجم","الحارس","المدافع","الجناح"],1],
+["ماذا تسمى الكرة الخارجة من خط المرمى بلمسة مهاجم؟",["ركلة مرمى","ركنية","تماس","جزاء"],0],
+["ماذا تسمى الكرة الخارجة من خط المرمى بلمسة مدافع؟",["ركنية","تماس","ركلة حرة","جزاء"],0],
+["كم مرمى في ملعب كرة القدم؟",["1","2","3","4"],1],
+["ما الجهاز الذي يستخدمه الحكم لمتابعة الوقت؟",["ساعة","هاتف فقط","كاميرا","حاسوب"],0],
+["ما اسم اللاعب الموجود في المقدمة عادةً؟",["مهاجم","حارس","مدافع","ظهير"],0],
+["ما اسم اللاعب الذي يلعب على طرف الملعب؟",["جناح","حارس","قلب دفاع","حكم"],0],
+["ما اسم المنطقة أمام المرمى؟",["منطقة الجزاء","دائرة الوسط","منطقة المدرب","خط التماس"],0],
+["ما اسم خط منتصف الملعب؟",["خط المنتصف","خط النهاية","خط الجزاء","خط المرمى"],0],
+["ما الرياضة التي تستخدم كرة القدم؟",["كرة القدم","التنس","السباحة","الملاكمة"],0]
 ],
 
-science:[
-["ما الكوكب المعروف بالكوكب الأحمر؟",["المريخ","الزهرة","عطارد","نبتون"],0],
-["ما الغاز الذي يحتاجه الإنسان للتنفس؟",["الهيدروجين","الأكسجين","النيتروجين","الهيليوم"],1],
-["ما العضو الذي يضخ الدم؟",["الكبد","القلب","الرئة","المعدة"],1],
-["ما أقرب كوكب إلى الشمس؟",["الأرض","المريخ","عطارد","الزهرة"],2],
-["ما القوة التي تجذب الأجسام نحو الأرض؟",["المغناطيسية","الجاذبية","الاحتكاك","الضغط"],1],
-["ما الحالة المعتادة للماء في درجة حرارة الغرفة؟",["صلبة","سائلة","غازية","بلازما"],1],
-["ما مركز المجموعة الشمسية؟",["الأرض","القمر","الشمس","المشتري"],2],
-["ما العملية التي تصنع بها النباتات غذاءها؟",["التنفس","الهضم","البناء الضوئي","التبخر"],2],
-["ما العضوان المسؤولان أساسًا عن التنفس؟",["القلب","الرئتان","الكبد","المعدة"],1],
-["ما الكوكب الأكبر في المجموعة الشمسية؟",["الأرض","زحل","المشتري","المريخ"],2]
+medium:[
+["من فاز بكأس العالم 2022؟",["الأرجنتين","فرنسا","البرازيل","ألمانيا"],0],
+["أين أقيم كأس العالم 2022؟",["قطر","روسيا","البرازيل","ألمانيا"],0],
+["من فاز بكأس العالم 2018؟",["فرنسا","كرواتيا","ألمانيا","الأرجنتين"],0],
+["من فاز بكأس العالم 2014؟",["ألمانيا","الأرجنتين","البرازيل","إسبانيا"],0],
+["من فاز بكأس العالم 2010؟",["إسبانيا","هولندا","ألمانيا","البرازيل"],0],
+["من فاز بكأس العالم 2006؟",["إيطاليا","فرنسا","ألمانيا","البرازيل"],0],
+["من فاز بكأس العالم 2002؟",["البرازيل","ألمانيا","تركيا","الأرجنتين"],0],
+["من فاز بكأس العالم 1998؟",["فرنسا","البرازيل","إيطاليا","ألمانيا"],0],
+["من فاز بكأس العالم 1994؟",["البرازيل","إيطاليا","ألمانيا","الأرجنتين"],0],
+["ما المنتخب الذي فاز بكأس العالم 1978؟",["الأرجنتين","هولندا","البرازيل","إيطاليا"],0],
+["كم لاعبًا في قائمة الفريق داخل الملعب؟",["11","10","9","12"],0],
+["ما اسم البطولة الأوروبية للأندية؟",["دوري أبطال أوروبا","كأس العالم","كوبا أمريكا","اليورو"],0],
+["ما اسم بطولة المنتخبات الأوروبية؟",["اليورو","دوري الأبطال","كأس العالم","كأس القارات"],0],
+["ما اسم بطولة أمريكا الجنوبية للمنتخبات؟",["كوبا أمريكا","اليورو","أمم أفريقيا","دوري الأمم"],0],
+["ما اسم الاتحاد الدولي لكرة القدم؟",["FIFA","UEFA","CAF","AFC"],0],
+["ما الاتحاد الأوروبي لكرة القدم؟",["UEFA","FIFA","CAF","CONMEBOL"],0],
+["ما اتحاد كرة القدم الأفريقي؟",["CAF","UEFA","FIFA","AFC"],0],
+["ما اسم الجائزة الفردية الشهيرة لأفضل لاعب؟",["الكرة الذهبية","الحذاء الفضي","القفاز الذهبي","الكأس الذهبية"],0],
+["ماذا يسمى تسجيل ثلاثة أهداف في مباراة واحدة؟",["هاتريك","دبل","أسيست","كلين شيت"],0],
+["ماذا يسمى تمرير الكرة التي ينتج عنها هدف؟",["تمريرة حاسمة","ركلة حرة","تسلل","تصدي"],0]
 ],
 
-movies:[
-["من هو عادل إمام؟",["ممثل مصري","لاعب كرة","مطرب","مخرج فقط"],0],
-["من اشتهر بشخصية اللمبي؟",["محمد هنيدي","أحمد حلمي","محمد سعد","كريم عبد العزيز"],2],
-["من بطل فيلم الفيل الأزرق؟",["كريم عبد العزيز","أحمد حلمي","محمد هنيدي","أحمد السقا"],0],
-["من بطل فيلم عسل أسود؟",["أحمد حلمي","محمد سعد","أحمد السقا","هاني رمزي"],0],
-["من أبطال فيلم الجزيرة؟",["أحمد السقا","أحمد حلمي","محمد هنيدي","كريم عبد العزيز"],0],
-["من أبطال فيلم كده رضا؟",["أحمد حلمي","عادل إمام","محمد هنيدي","أحمد السقا"],0],
-["العمل المعروف بشخصية الكبير هو؟",["الكبير أوي","الاختيار","رأفت الهجان","لن أعيش في جلباب أبي"],0],
-["إسماعيل ياسين كان؟",["ممثلًا مصريًا","لاعبًا","سياسيًا","عالمًا"],0],
-["محمد سعد اشتهر بشخصية؟",["اللمبي","الكبير","حزلقوم","الخواجة"],0],
-["أحمد حلمي يعمل في مجال؟",["التمثيل","كرة القدم","الطب","الهندسة"],0]
+hard:[
+["من فاز بأول كأس عالم عام 1930؟",["أوروغواي","الأرجنتين","البرازيل","إيطاليا"],0],
+["أين أقيم أول كأس عالم؟",["أوروغواي","إيطاليا","فرنسا","البرازيل"],0],
+["من أكثر منتخب فاز بكأس العالم حتى 2022؟",["البرازيل","ألمانيا","إيطاليا","الأرجنتين"],0],
+["من فاز بكأس العالم 1954؟",["ألمانيا الغربية","المجر","البرازيل","الأوروغواي"],0],
+["من فاز بكأس العالم 1966؟",["إنجلترا","ألمانيا الغربية","البرازيل","الأرجنتين"],0],
+["من فاز بكأس العالم 1986؟",["الأرجنتين","ألمانيا الغربية","فرنسا","البرازيل"],0],
+["من فاز بكأس العالم 1990؟",["ألمانيا الغربية","الأرجنتين","إيطاليا","البرازيل"],0],
+["من فاز بكأس العالم 1982؟",["إيطاليا","ألمانيا الغربية","البرازيل","الأرجنتين"],0],
+["من فاز بكأس العالم 1974؟",["ألمانيا الغربية","هولندا","البرازيل","إيطاليا"],0],
+["من فاز بكأس العالم 1958؟",["البرازيل","السويد","فرنسا","ألمانيا الغربية"],0]
+]
+
+},
+
+
+science:{
+
+easy:[
+["ما الكوكب الأحمر؟",["المريخ","الزهرة","عطارد","نبتون"],0],
+["ما الغاز الذي نتنفسه؟",["الأكسجين","الهيدروجين","الهيليوم","النيتروجين"],0],
+["ما العضو الذي يضخ الدم؟",["القلب","الكبد","الرئة","المعدة"],0],
+["ما أقرب كوكب للشمس؟",["عطارد","الزهرة","الأرض","المريخ"],0],
+["ما مركز المجموعة الشمسية؟",["الشمس","الأرض","القمر","المشتري"],0],
+["ما القوة التي تجذب الأجسام للأرض؟",["الجاذبية","الاحتكاك","المغناطيسية","الضغط"],0],
+["ما حالة الماء في درجة حرارة الغرفة؟",["سائلة","صلبة","غازية","بلازما"],0],
+["ما أكبر كوكب؟",["المشتري","الأرض","زحل","المريخ"],0],
+["ما العضوان المسؤولان عن التنفس؟",["الرئتان","القلب","الكبد","المعدة"],0],
+["ما العملية التي تصنع بها النباتات غذاءها؟",["البناء الضوئي","الهضم","التبخر","التكاثف"],0],
+["ما مصدر الضوء والحرارة الأساسي للأرض؟",["الشمس","القمر","المريخ","الرياح"],0],
+["ما العضو المسؤول عن التفكير؟",["الدماغ","القلب","الكبد","المعدة"],0],
+["ما وحدة قياس الطول الأساسية؟",["المتر","الكيلوغرام","الثانية","الأمبير"],0],
+["ما وحدة قياس الكتلة؟",["الكيلوغرام","المتر","الثانية","الفولت"],0],
+["ما وحدة قياس الزمن في النظام الدولي؟",["الثانية","المتر","الكيلوغرام","الأمبير"],0],
+["ما الكوكب الذي نعيش عليه؟",["الأرض","المريخ","الزهرة","زحل"],0],
+["ما القمر الطبيعي للأرض؟",["القمر","فوبوس","تيتان","أوروبا"],0],
+["ما المادة التي يتكون منها الثلج؟",["الماء","الحديد","الملح","الزجاج"],0],
+["ما الغاز الذي تطلقه النباتات أثناء البناء الضوئي؟",["الأكسجين","الهيدروجين","النيتروجين","الهيليوم"],0],
+["ما الجهاز الذي يقيس درجة الحرارة؟",["الترمومتر","البارومتر","البوصلة","الميزان"],0]
 ],
 
-technology:[
-["ماذا تعني CPU؟",["وحدة المعالجة المركزية","ذاكرة التخزين","بطاقة الرسوميات","نظام التشغيل"],0],
-["من تطور نظام Android؟",["Google","Apple","Sony","Nintendo"],0],
-["ما المتصفح الذي تطوره Google؟",["Chrome","Safari","Edge","Firefox"],0],
-["ماذا يعني USB؟",["Universal Serial Bus","United System Board","Ultra Speed Browser","User Storage Box"],0],
+medium:[
+["ما العنصر الذي رمزه O؟",["الأكسجين","الذهب","الحديد","الهيدروجين"],0],
+["ما العنصر الذي رمزه H؟",["الهيدروجين","الهيليوم","الحديد","الزئبق"],0],
+["ما العنصر الذي رمزه Fe؟",["الحديد","الفلور","الفضة","الذهب"],0],
+["ما العنصر الذي رمزه Au؟",["الذهب","الفضة","النحاس","الحديد"],0],
+["ما سرعة الضوء التقريبية؟",["300 ألف كم/ث","30 ألف كم/ث","3 آلاف كم/ث","3 ملايين كم/ث"],0],
+["ما الكوكب صاحب الحلقات الأشهر؟",["زحل","المريخ","الأرض","عطارد"],0],
+["ما أكبر عضو في جسم الإنسان؟",["الجلد","الكبد","القلب","الرئة"],0],
+["ما أصغر وحدة حية؟",["الخلية","العضو","النسيج","الجهاز"],0],
+["ما الحمض النووي المعروف اختصارًا بـ DNA؟",["المادة الوراثية","هرمون","إنزيم","فيتامين"],0],
+["ما الجهاز المسؤول عن نقل الدم؟",["الدورة الدموية","الهضمي","التنفسي","العصبي"],0],
+["ما الغاز الأكثر وفرة في الغلاف الجوي؟",["النيتروجين","الأكسجين","ثاني أكسيد الكربون","الهيدروجين"],0],
+["ما درجة غليان الماء تقريبًا عند ضغط جوي عادي؟",["100°C","50°C","0°C","200°C"],0],
+["ما درجة تجمد الماء؟",["0°C","10°C","50°C","100°C"],0],
+["ما الوحدة الأساسية لشدة التيار؟",["الأمبير","الفولت","الواط","الأوم"],0],
+["ما الوحدة التي تقيس المقاومة الكهربائية؟",["الأوم","الفولت","الأمبير","الواط"],0],
+["ما اسم تحول السائل إلى غاز؟",["التبخر","التجمد","التكاثف","الانصهار"],0],
+["ما اسم تحول الغاز إلى سائل؟",["التكاثف","التبخر","التجمد","الانصهار"],0],
+["ما اسم تحول الصلب إلى سائل؟",["الانصهار","التجمد","التبخر","التكاثف"],0],
+["ما اسم تحول السائل إلى صلب؟",["التجمد","الانصهار","التبخر","الغليان"],0],
+["ما الكوكب المعروف بنجم الصباح؟",["الزهرة","المريخ","عطارد","زحل"],0]
+],
+
+hard:[
+["ما أصغر جسيم يحتفظ بخواص العنصر؟",["الذرة","الخلية","الجزيء دائمًا","النواة"],0],
+["ما الجسيم ذو الشحنة السالبة؟",["الإلكترون","البروتون","النيوترون","الفوتون"],0],
+["ما الجسيم ذو الشحنة الموجبة؟",["البروتون","الإلكترون","النيوترون","الفوتون"],0],
+["ما الجسيم المتعادل كهربائيًا؟",["النيوترون","الإلكترون","البروتون","الأيون"],0],
+["ما وحدة قياس الطاقة في النظام الدولي؟",["الجول","واط","نيوتن","باسكال"],0],
+["ما وحدة قياس القوة؟",["النيوتن","الجول","الواط","الباسكال"],0],
+["ما وحدة قياس الضغط؟",["الباسكال","النيوتن","الجول","الأوم"],0],
+["ما اسم القانون الذي يربط الجهد والتيار والمقاومة؟",["قانون أوم","قانون نيوتن","قانون بويل","قانون هوك"],0],
+["ما القوة التي تربط الكواكب بالشمس؟",["الجاذبية","الاحتكاك","الكهرباء","المغناطيسية"],0],
+["ما اسم الانقسام الذي ينتج خليتين متماثلتين غالبًا؟",["الانقسام المتساوي","الانقسام الاختزالي","الإخصاب","الطفرة"],0]
+]
+
+},
+
+
+technology:{
+
+easy:[
+["ماذا تعني CPU؟",["وحدة المعالجة المركزية","ذاكرة التخزين","بطاقة الشاشة","نظام التشغيل"],0],
 ["ما نظام تشغيل iPhone؟",["iOS","Android","Windows","Linux"],0],
-["ما وظيفة RAM الأساسية؟",["ذاكرة مؤقتة","طباعة الملفات","تشغيل الصوت","توصيل الإنترنت"],0],
-["ما لغة بناء هيكل صفحات الويب؟",["HTML","MP3","JPEG","PDF"],0],
-["ما الشركة التي تصنع هواتف Galaxy؟",["Samsung","Apple","Google","Microsoft"],0],
-["ما المقصود بـ Wi-Fi؟",["اتصال لاسلكي بالشبكات","نوع شاشة","لغة برمجة","بطارية"],0],
-["ما الجهاز المستخدم لتحريك المؤشر؟",["الفأرة","الطابعة","السماعة","الكاميرا"],0]
+["ما نظام تشغيل معظم هواتف سامسونج؟",["Android","iOS","Windows","DOS"],0],
+["ما المتصفح الذي تطوره Google؟",["Chrome","Safari","Firefox","Edge"],0],
+["ماذا يعني USB؟",["Universal Serial Bus","Ultra Speed Browser","User System Box","United Software Bus"],0],
+["ما الجهاز المستخدم لتحريك المؤشر؟",["الفأرة","الطابعة","السماعة","الكاميرا"],0],
+["ما الجهاز الذي يعرض الصورة؟",["الشاشة","الطابعة","الفأرة","الميكروفون"],0],
+["ما الجهاز الذي يطبع الورق؟",["الطابعة","الشاشة","الفأرة","السماعة"],0],
+["ما الشركة التي تطور Android؟",["Google","Apple","Microsoft","Sony"],0],
+["ما الشركة التي تصنع iPhone؟",["Apple","Samsung","Google","Microsoft"],0],
+["ما اسم شبكة الإنترنت العالمية؟",["Internet","Bluetooth","USB","RAM"],0],
+["ما التقنية اللاسلكية قصيرة المدى للأجهزة؟",["Bluetooth","HDMI","USB","Ethernet"],0],
+["ما المقصود بكلمة Wi-Fi؟",["اتصال لاسلكي بالشبكات","نوع شاشة","لغة برمجة","بطارية"],0],
+["ما وظيفة لوحة المفاتيح؟",["إدخال النصوص","عرض الصور","طباعة الورق","تشغيل الإنترنت فقط"],0],
+["ما الجهاز الذي يسجل الصوت؟",["الميكروفون","الشاشة","الفأرة","الطابعة"],0],
+["ما الجهاز الذي يصدر الصوت؟",["السماعة","الفأرة","الكاميرا","الطابعة"],0],
+["ما اسم الذاكرة المؤقتة في الكمبيوتر؟",["RAM","ROM","USB","CPU"],0],
+["ما الجزء المسؤول عن معالجة التعليمات؟",["CPU","الشاشة","الفأرة","الطابعة"],0],
+["ما البرنامج الذي نستخدمه لزيارة المواقع؟",["متصفح","آلة حاسبة","مشغل موسيقى","محرر صور"],0],
+["ما اسم أشهر محرك بحث من Google؟",["Google Search","Chrome","Android","Drive"],0]
 ],
 
-literature:[
+medium:[
+["ماذا تعني RAM؟",["Random Access Memory","Read All Memory","Rapid App Machine","Random App Module"],0],
+["ماذا تعني ROM؟",["Read Only Memory","Random Only Memory","Run Online Memory","Read Open Module"],0],
+["ما لغة بناء هيكل صفحات الويب؟",["HTML","CSS","SQL","Python"],0],
+["ما اللغة المستخدمة لتنسيق صفحات الويب؟",["CSS","HTML","SQL","C++"],0],
+["ما اللغة التي تضيف التفاعل للويب؟",["JavaScript","HTML","CSS","SQL"],0],
+["ما امتداد صفحة HTML المعتاد؟",["html","mp3","jpg","exe"],0],
+["ما المقصود بـ URL؟",["عنوان مورد على الويب","نوع معالج","ذاكرة","صورة"],0],
+["ما وظيفة DNS؟",["تحويل أسماء النطاقات إلى عناوين IP","ضغط الصور","تشغيل الصوت","تخزين الملفات فقط"],0],
+["ما عنوان IP؟",["عنوان جهاز على شبكة","نوع ملف","برنامج حماية","معالج"],0],
+["ما المقصود بالحوسبة السحابية؟",["استخدام موارد عبر الإنترنت","إغلاق الكمبيوتر","تشغيل الألعاب فقط","ضغط الفيديو"],0],
+["ما وظيفة نظام التشغيل؟",["إدارة موارد الجهاز والبرامج","طباعة الأوراق فقط","تصفح الإنترنت فقط","تشغيل الصوت فقط"],0],
+["ما المقصود بـ SSD؟",["وحدة تخزين صلبة","نوع شاشة","معالج","نظام تشغيل"],0],
+["ما المقصود بـ HDD؟",["قرص صلب ميكانيكي","بطاقة رسومية","معالج","ذاكرة RAM"],0],
+["ما وظيفة GPU؟",["معالجة الرسوميات","إدارة الصوت فقط","تخزين الملفات فقط","توصيل الإنترنت"],0],
+["ما معنى HTTPS؟",["نسخة آمنة من HTTP","نوع صورة","نظام تشغيل","لغة برمجة"],0],
+["ما وظيفة جدار الحماية؟",["المساعدة في حماية الشبكة","تسريع الشاشة","زيادة حجم القرص","تشغيل الصوت"],0],
+["ما المقصود بالنسخ الاحتياطي؟",["إنشاء نسخة من البيانات","حذف البيانات","ضغط الشاشة","إيقاف الشبكة"],0],
+["ما المقصود بقاعدة البيانات؟",["مجموعة منظمة من البيانات","نوع شاشة","بطارية","معالج"],0],
+["ما لغة تستخدم كثيرًا في تحليل البيانات والبرمجة؟",["Python","HTML","JPEG","MP4"],0],
+["ما المقصود بالذكاء الاصطناعي؟",["تقنيات تحاكي بعض قدرات الذكاء البشري","نوع ذاكرة","شاشة","كابل"],0]
+],
+
+hard:[
+["ما هو IPv6؟",["إصدار أحدث من بروتوكول عناوين الإنترنت","نوع معالج","لغة برمجة","نظام ملفات"],0],
+["ما المنفذ الشائع لـ HTTPS؟",["443","80","21","25"],0],
+["ما المنفذ الشائع لـ HTTP؟",["80","443","22","53"],0],
+["ما البروتوكول المستخدم عادةً لنقل صفحات الويب؟",["HTTP","FTP","SMTP","SSH"],0],
+["ما البروتوكول الشائع لإرسال البريد الإلكتروني؟",["SMTP","HTTP","DNS","FTP"],0],
+["ما وظيفة DHCP؟",["توزيع إعدادات الشبكة مثل عناوين IP","ضغط الفيديو","تشفير الصور","تشغيل المعالج"],0],
+["ما المقصود بالتشفير؟",["تحويل البيانات إلى صيغة محمية بمفتاح","حذف البيانات","ضغط الشاشة","زيادة سرعة الإنترنت"],0],
+["ما المقصود بـ API؟",["واجهة برمجية للتطبيقات","نوع معالج","ملف صوت","نظام تشغيل"],0],
+["ما المقصود بـ Git؟",["نظام للتحكم في الإصدارات","متصفح","لغة برمجة","قاعدة بيانات فقط"],0],
+["ما وظيفة GitHub أساسًا؟",["استضافة وإدارة مشاريع برمجية ومستودعات","تشغيل نظام Android","تصفح الفيديو فقط","تصميم المعالجات"],0]
+]
+
+},
+
+
+literature:{
+
+easy:[
 ["من أمير الشعراء؟",["أحمد شوقي","حافظ إبراهيم","المتنبي","طه حسين"],0],
 ["من عميد الأدب العربي؟",["طه حسين","نجيب محفوظ","العقاد","أحمد شوقي"],0],
-["من مؤلف ثلاثية القاهرة؟",["نجيب محفوظ","طه حسين","توفيق الحكيم","العقاد"],0],
+["من مؤلف ثلاثية القاهرة؟",["نجيب محفوظ","طه حسين","العقاد","توفيق الحكيم"],0],
 ["ما جمع كلمة كتاب؟",["كتب","كتابون","كتابات","كتبة"],0],
 ["ما مفرد مدارس؟",["مدرسة","مدرس","درس","مدرسي"],0],
 ["ما ضد كلمة سريع؟",["بطيء","قوي","كبير","قصير"],0],
 ["ما مفرد أقلام؟",["قلم","قلام","قلمة","كاتب"],0],
+["ما ضد النجاح؟",["الفشل","التفوق","التقدم","الاجتهاد"],0],
+["ما جمع كلمة قلم؟",["أقلام","قلمات","قلمون","قلام"],0],
+["ما مفرد كتب؟",["كتاب","كاتب","كتابة","مكتبة"],0],
+["ما نوع كلمة محمد؟",["اسم","فعل","حرف","صفة"],0],
+["ما نوع كلمة يكتب؟",["فعل","اسم","حرف","صفة"],0],
+["ما نوع كلمة في؟",["حرف","اسم","فعل","صفة"],0],
+["ما ضد كلمة كبير؟",["صغير","طويل","واسع","كثير"],0],
+["ما مرادف سعيد؟",["فرح","حزين","غاضب","متعب"],0],
+["ما مرادف شجاع؟",["جريء","خائف","ضعيف","حزين"],0],
+["ما جمع مدينة؟",["مدن","مدينات","مدينيون","مدينة"],0],
+["ما مفرد أشجار؟",["شجرة","شجر","شجير","شاجر"],0],
+["ما جمع طالب؟",["طلاب","طالبات","طلب","طلوب"],0],
+["ما مفرد كتب؟",["كتاب","كاتب","مكتبة","كتابة"],0]
+],
+
+medium:[
 ["من مؤلف رواية الأيام؟",["طه حسين","نجيب محفوظ","العقاد","يوسف إدريس"],0],
-["ما ضد كلمة النجاح؟",["الفشل","التفوق","التقدم","الاجتهاد"],0],
-["ما نوع كلمة القاهرة في جملة: القاهرة جميلة؟",["اسم","فعل","حرف","صفة"],0]
+["من مؤلف رواية دعاء الكروان؟",["طه حسين","نجيب محفوظ","توفيق الحكيم","العقاد"],0],
+["من مؤلف مسرحية أهل الكهف؟",["توفيق الحكيم","طه حسين","نجيب محفوظ","العقاد"],0],
+["من مؤلف العبقريات؟",["عباس محمود العقاد","طه حسين","الرافعي","المنفلوطي"],0],
+["من شاعر النيل؟",["حافظ إبراهيم","أحمد شوقي","المتنبي","البحتري"],0],
+["من صاحب ديوان الحماسة؟",["أبو تمام","المتنبي","البحتري","الجاحظ"],0],
+["من صاحب كتاب البيان والتبيين؟",["الجاحظ","أبو تمام","المتنبي","ابن خلدون"],0],
+["من صاحب كتاب كليلة ودمنة بصورته العربية المشهورة؟",["ابن المقفع","الجاحظ","المتنبي","أبو تمام"],0],
+["من صاحب المقدمة؟",["ابن خلدون","الجاحظ","الطبري","ابن المقفع"],0],
+["من شاعر العربية الأشهر في العصر العباسي؟",["المتنبي","حافظ إبراهيم","أحمد شوقي","امرؤ القيس"],0],
+["ما البحر الشعري الذي تفعيلته الأساسية فعولن؟",["الطويل","الكامل","البسيط","الوافر"],0],
+["ما الأسلوب الذي يبدأ غالبًا بأداة نداء؟",["نداء","استفهام","نفي","تعجب"],0],
+["ما الأسلوب الذي يستخدم هل أو الهمزة للسؤال؟",["استفهام","نداء","أمر","نهي"],0],
+["ما نوع الجملة التي تبدأ باسم؟",["اسمية","فعلية","شرطية","تعجبية"],0],
+["ما نوع الجملة التي تبدأ بفعل؟",["فعلية","اسمية","شرطية","ندائية"],0],
+["ما علامة رفع الفاعل الأصلية؟",["الضمة","الفتحة","الكسرة","السكون"],0],
+["ما علامة نصب المفعول به الأصلية؟",["الفتحة","الضمة","الكسرة","السكون"],0],
+["ما علامة جر الاسم الأصلية؟",["الكسرة","الضمة","الفتحة","السكون"],0],
+["ما اسم الفاعل من كتب؟",["كاتب","مكتوب","كتاب","كتابة"],0],
+["ما اسم المفعول من كتب؟",["مكتوب","كاتب","كتاب","كتابة"],0]
+],
+
+hard:[
+["من صاحب معلقة قفا نبك؟",["امرؤ القيس","زهير بن أبي سلمى","عنترة","طرفة"],0],
+["من صاحب معلقة هل غادر الشعراء؟",["عنترة بن شداد","امرؤ القيس","زهير","لبيد"],0],
+["من صاحب كتاب الأغاني؟",["أبو الفرج الأصفهاني","الجاحظ","ابن المقفع","المبرد"],0],
+["من صاحب كتاب الصناعتين؟",["أبو هلال العسكري","الجاحظ","ابن رشيق","الجرجاني"],0],
+["من صاحب دلائل الإعجاز؟",["عبد القاهر الجرجاني","الجاحظ","أبو تمام","ابن خلدون"],0],
+["من صاحب أسرار البلاغة؟",["عبد القاهر الجرجاني","الزمخشري","الجاحظ","أبو هلال"],0],
+["ما العلم الذي يبحث في أوزان الشعر؟",["العَروض","النحو","الصرف","البيان"],0],
+["ما العلم الذي يبحث في أحوال أواخر الكلمات؟",["النحو","الصرف","العروض","البديع"],0],
+["ما العلم الذي يبحث في بنية الكلمة وتحولاتها؟",["الصرف","النحو","العروض","البلاغة"],0],
+["ما المحسن البديعي الذي يجمع بين الشيء وضده؟",["الطباق","الجناس","السجع","التورية"],0]
+]
+
+}
+
+};
+
+
+/*
+====================================================
+الأفلام والمسلسلات المصرية
+====================================================
+*/
+
+bank.movies={
+
+easy:[
+["من هو عادل إمام؟",["ممثل مصري","لاعب كرة","عالم","مغنٍ فقط"],0],
+["من اشتهر بشخصية اللمبي؟",["محمد سعد","أحمد حلمي","محمد هنيدي","كريم عبد العزيز"],0],
+["من بطل فيلم الفيل الأزرق؟",["كريم عبد العزيز","أحمد حلمي","محمد سعد","أحمد السقا"],0],
+["من بطل فيلم عسل أسود؟",["أحمد حلمي","محمد سعد","أحمد السقا","هاني رمزي"],0],
+["من أبطال فيلم الجزيرة؟",["أحمد السقا","أحمد حلمي","محمد هنيدي","كريم عبد العزيز"],0],
+["من أبطال فيلم كده رضا؟",["أحمد حلمي","عادل إمام","محمد هنيدي","أحمد السقا"],0],
+["من أبطال مسلسل الكبير أوي؟",["أحمد مكي","عادل إمام","محمد هنيدي","أحمد حلمي"],0],
+["إسماعيل ياسين كان؟",["ممثلًا مصريًا","لاعبًا","طبيبًا","سياسيًا"],0],
+["محمد هنيدي يعمل في مجال؟",["التمثيل","كرة القدم","الطب","الهندسة"],0],
+["أحمد حلمي يعمل في مجال؟",["التمثيل","كرة القدم","الطب","الهندسة"],0],
+["كريم عبد العزيز ممثل من؟",["مصر","سوريا","المغرب","لبنان"],0],
+["أحمد السقا ممثل؟",["مصري","تركي","هندي","أمريكي"],0],
+["فيلم الناظر من بطولة؟",["علاء ولي الدين","أحمد حلمي","عادل إمام","محمد سعد"],0],
+["فيلم صعيدي في الجامعة الأمريكية من بطولة؟",["محمد هنيدي","أحمد حلمي","عادل إمام","أحمد السقا"],0],
+["فيلم الإرهاب والكباب من بطولة؟",["عادل إمام","محمد هنيدي","أحمد حلمي","أحمد السقا"],0],
+["فيلم مرجان أحمد مرجان من بطولة؟",["عادل إمام","محمد سعد","أحمد حلمي","أحمد السقا"],0],
+["فيلم مافيا من بطولة؟",["أحمد السقا","محمد هنيدي","أحمد حلمي","عادل إمام"],0],
+["فيلم جعلتني مجرمًا من بطولة؟",["أحمد حلمي","محمد سعد","محمد هنيدي","أحمد السقا"],0],
+["فيلم فول الصين العظيم من بطولة؟",["محمد هنيدي","أحمد حلمي","عادل إمام","أحمد السقا"],0],
+["فيلم آسف على الإزعاج من بطولة؟",["أحمد حلمي","محمد هنيدي","محمد سعد","كريم عبد العزيز"],0]
+],
+
+medium:[
+["من أخرج فيلم الفيل الأزرق؟",["مروان حامد","شريف عرفة","خالد مرعي","عمرو عرفة"],0],
+["من أخرج فيلم كده رضا؟",["أحمد جلال","شريف عرفة","مروان حامد","محمد خان"],0],
+["من أخرج فيلم الإرهاب والكباب؟",["شريف عرفة","عاطف الطيب","يوسف شاهين","مروان حامد"],0],
+["من أخرج فيلم الناظر؟",["شريف عرفة","أحمد جلال","مروان حامد","عمرو عرفة"],0],
+["من أخرج فيلم مافيا؟",["شريف عرفة","مروان حامد","خالد مرعي","أحمد جلال"],0],
+["من بطل فيلم تراب الماس؟",["آسر ياسين","أحمد السقا","كريم عبد العزيز","محمد هنيدي"],0],
+["من بطل فيلم كيرة والجن؟",["كريم عبد العزيز وأحمد عز","أحمد حلمي ومحمد هنيدي","عادل إمام وأحمد السقا","محمد سعد وكريم عبد العزيز"],0],
+["من بطل فيلم الممر؟",["أحمد عز","أحمد حلمي","محمد هنيدي","محمد سعد"],0],
+["من بطل فيلم الفيل الأزرق 2؟",["كريم عبد العزيز","أحمد السقا","أحمد عز","محمد هنيدي"],0],
+["من بطل فيلم ولاد رزق؟",["أحمد عز","كريم عبد العزيز","أحمد حلمي","محمد هنيدي"],0],
+["من مؤلف رواية الفيل الأزرق؟",["أحمد مراد","نجيب محفوظ","يوسف زيدان","علاء الأسواني"],0],
+["مسلسل رأفت الهجان ينتمي إلى؟",["الدراما المصرية","الكوميديا فقط","الخيال العلمي","الرسوم المتحركة"],0],
+["من قام بدور رأفت الهجان؟",["محمود عبد العزيز","عادل إمام","نور الشريف","أحمد زكي"],0],
+["من قام بدور أحمد عبد العزيز في مسلسل الاختيار؟",["أحمد مكي","كريم عبد العزيز","أمير كرارة","أحمد عز"],0],
+["من أبطال مسلسل الاختيار في موسمه الأول؟",["أمير كرارة","محمد هنيدي","أحمد حلمي","أحمد السقا"],0],
+["من بطل مسلسل الحشاشين؟",["كريم عبد العزيز","أحمد مكي","أحمد عز","يوسف الشريف"],0],
+["من بطل مسلسل الكبير أوي؟",["أحمد مكي","محمد هنيدي","أحمد حلمي","عادل إمام"],0],
+["من أبطال مسلسل تحت الوصاية؟",["منى زكي","هند صبري","ياسمين عبد العزيز","غادة عبد الرازق"],0],
+["من بطل فيلم 122؟",["طارق لطفي","أحمد عز","كريم عبد العزيز","أحمد السقا"],0],
+["من أبطال فيلم كازابلانكا؟",["أمير كرارة","أحمد حلمي","محمد هنيدي","كريم عبد العزيز"],0]
+],
+
+hard:[
+["من مخرج فيلم الأرض؟",["يوسف شاهين","عاطف الطيب","صلاح أبو سيف","شريف عرفة"],0],
+["من مخرج فيلم شيء من الخوف؟",["حسين كمال","يوسف شاهين","صلاح أبو سيف","عاطف الطيب"],0],
+["من مخرج فيلم البريء؟",["عاطف الطيب","يوسف شاهين","شريف عرفة","محمد خان"],0],
+["من مخرج فيلم زوجة رجل مهم؟",["محمد خان","عاطف الطيب","يوسف شاهين","خيري بشارة"],0],
+["من مخرج فيلم سواق الأتوبيس؟",["عاطف الطيب","محمد خان","يوسف شاهين","شريف عرفة"],0],
+["من مخرج فيلم باب الحديد؟",["يوسف شاهين","صلاح أبو سيف","حسين كمال","عاطف الطيب"],0],
+["من قام بدور الشيخ حسني في الكيت كات؟",["محمود عبد العزيز","أحمد زكي","نور الشريف","عادل إمام"],0],
+["من أخرج فيلم الكيت كات؟",["داود عبد السيد","يوسف شاهين","عاطف الطيب","شريف عرفة"],0],
+["من قام بدور عبد السميع في فيلم البريء؟",["أحمد زكي","محمود عبد العزيز","نور الشريف","عادل إمام"],0],
+["من أخرج فيلم سواق الأتوبيس؟",["عاطف الطيب","محمد خان","داود عبد السيد","يوسف شاهين"],0]
 ]
 
 };
 
 
 /* =========================
-   متغيرات اللعبة
+   باقي البيانات
 ========================= */
 
+bank.islamic = bank.islamic;
+bank.history = bank.history;
+bank.geography = bank.geography;
+bank.football = bank.football;
+bank.science = bank.science;
+bank.technology = bank.technology;
+bank.literature = bank.literature;
+
+
+/*
+====================================================
+متغيرات اللعبة
+====================================================
+*/
+
 let currentCategory="";
+let currentLevel="";
 let currentQuestions=[];
 let currentIndex=0;
 let score=0;
@@ -551,18 +1114,49 @@ let timer=null;
 let timeLeft=20;
 
 
-/* =========================
-   بدء اللعبة
-========================= */
+/*
+====================================================
+اختيار القسم
+====================================================
+*/
 
-function startGame(category){
+function chooseCategory(category){
 
 currentCategory=category;
 
-currentQuestions=questions[category].map(x=>({
-q:x[0],
-a:x[1],
-correct:x[2]
+document.getElementById("home")
+.classList.remove("active");
+
+document.getElementById("levels")
+.classList.add("active");
+
+}
+
+
+/*
+====================================================
+بدء المستوى
+====================================================
+*/
+
+function startGame(level){
+
+currentLevel=level;
+
+let source=bank[currentCategory][level];
+
+/*
+نتأكد إن الأسئلة موجودة
+*/
+if(!source || source.length===0){
+alert("مفيش أسئلة في المستوى ده.");
+return;
+}
+
+currentQuestions=source.map(item=>({
+q:item[0],
+a:[...item[1]],
+correct:item[2]
 }));
 
 /* خلط الأسئلة */
@@ -571,35 +1165,81 @@ currentQuestions.sort(()=>Math.random()-.5);
 currentIndex=0;
 score=0;
 
-document.getElementById("home").classList.remove("active");
-document.getElementById("result").classList.remove("active");
-document.getElementById("game").classList.add("active");
+document.getElementById("levels")
+.classList.remove("active");
 
-document.getElementById("score").textContent=score;
+document.getElementById("result")
+.classList.remove("active");
+
+document.getElementById("game")
+.classList.add("active");
+
+document.getElementById("score")
+.textContent=score;
 
 showQuestion();
+
 }
 
 
-/* =========================
-   عرض السؤال
-========================= */
+/*
+====================================================
+عرض السؤال
+====================================================
+*/
 
 function showQuestion(){
 
 clearInterval(timer);
 
 if(currentIndex>=currentQuestions.length){
+
 showResult();
 return;
+
 }
 
 const q=currentQuestions[currentIndex];
 
-document.getElementById("questionNumber").textContent=
-"السؤال "+(currentIndex+1)+" من "+currentQuestions.length;
+document.getElementById("questionNumber")
+.textContent=
+"السؤال "+(currentIndex+1)+
+" من "+currentQuestions.length;
 
-document.getElementById("question").textContent=q.q;
+document.getElementById("question")
+.textContent=q.q;
+
+
+/* اسم المستوى */
+
+const badge=document.getElementById("levelBadge");
+
+if(currentLevel==="easy"){
+
+badge.textContent="🟢 سهل • 10 نقاط";
+
+badge.className="level-badge badge-easy";
+
+}
+
+else if(currentLevel==="medium"){
+
+badge.textContent="🟡 متوسط • 20 نقطة";
+
+badge.className="level-badge badge-medium";
+
+}
+
+else{
+
+badge.textContent="🔴 صعب • 30 نقطة";
+
+badge.className="level-badge badge-hard";
+
+}
+
+
+/* الاختيارات */
 
 const answers=document.getElementById("answers");
 
@@ -610,27 +1250,36 @@ q.a.forEach((answer,index)=>{
 const button=document.createElement("button");
 
 button.className="answer";
+
 button.textContent=answer;
 
 button.onclick=()=>{
+
 checkAnswer(index,button);
+
 };
 
 answers.appendChild(button);
 
 });
 
+
 updateProgress();
+
+
+/* المؤقت */
 
 timeLeft=20;
 
-document.getElementById("timer").textContent=timeLeft;
+document.getElementById("timer")
+.textContent=timeLeft;
 
 timer=setInterval(()=>{
 
 timeLeft--;
 
-document.getElementById("timer").textContent=timeLeft;
+document.getElementById("timer")
+.textContent=timeLeft;
 
 if(timeLeft<=0){
 
@@ -641,6 +1290,7 @@ disableAnswers();
 setTimeout(()=>{
 
 currentIndex++;
+
 showQuestion();
 
 },500);
@@ -652,9 +1302,11 @@ showQuestion();
 }
 
 
-/* =========================
-   الإجابة
-========================= */
+/*
+====================================================
+الإجابة
+====================================================
+*/
 
 function checkAnswer(index,button){
 
@@ -670,21 +1322,36 @@ if(index===q.correct){
 
 button.classList.add("correct");
 
-score+=10;
+let points=10;
 
-document.getElementById("score").textContent=score;
+if(currentLevel==="medium"){
+points=20;
+}
 
-}else{
+if(currentLevel==="hard"){
+points=30;
+}
+
+score+=points;
+
+document.getElementById("score")
+.textContent=score;
+
+}
+
+else{
 
 button.classList.add("wrong");
 
-all[q.correct].classList.add("correct");
+all[q.correct]
+.classList.add("correct");
 
 }
 
 setTimeout(()=>{
 
 currentIndex++;
+
 showQuestion();
 
 },900);
@@ -692,93 +1359,163 @@ showQuestion();
 }
 
 
-/* =========================
-   تعطيل الاختيارات
-========================= */
+/*
+====================================================
+تعطيل الاختيارات
+====================================================
+*/
 
 function disableAnswers(){
 
-document.querySelectorAll(".answer").forEach(button=>{
+document.querySelectorAll(".answer")
+.forEach(button=>{
+
 button.disabled=true;
+
 });
 
 }
 
 
-/* =========================
-   شريط التقدم
-========================= */
+/*
+====================================================
+شريط التقدم
+====================================================
+*/
 
 function updateProgress(){
 
 const percentage=
 (currentIndex/currentQuestions.length)*100;
 
-document.getElementById("progressBar").style.width=
-percentage+"%";
+document.getElementById("progressBar")
+.style.width=percentage+"%";
 
 }
 
 
-/* =========================
-   النتيجة
-========================= */
+/*
+====================================================
+النتيجة
+====================================================
+*/
 
 function showResult(){
 
 clearInterval(timer);
 
-document.getElementById("game").classList.remove("active");
-document.getElementById("result").classList.add("active");
+document.getElementById("game")
+.classList.remove("active");
 
-document.getElementById("finalScore").textContent=score;
+document.getElementById("result")
+.classList.add("active");
 
-const total=currentQuestions.length*10;
+document.getElementById("finalScore")
+.textContent=score;
+
+let maxScore;
+
+if(currentLevel==="easy"){
+maxScore=currentQuestions.length*10;
+}
+
+else if(currentLevel==="medium"){
+maxScore=currentQuestions.length*20;
+}
+
+else{
+maxScore=currentQuestions.length*30;
+}
 
 let text="";
 
-if(score===total){
+if(score===maxScore){
+
 text="🏆 أسطوري! جبت الدرجة النهائية!";
+
 }
-else if(score>=70){
+
+else if(score>=maxScore*.75){
+
 text="🔥 ممتاز جدًا!";
+
 }
-else if(score>=50){
-text="👏 كويس! تقدر تكسر رقمك.";
+
+else if(score>=maxScore*.5){
+
+text="👏 نتيجة كويسة!";
+
 }
+
 else{
-text="💪 جرّب تاني وهتجيب أعلى!";
-}
 
-document.getElementById("resultText").textContent=text;
+text="💪 حاول مرة تانية وهتكسر رقمك!";
 
 }
 
+document.getElementById("resultText")
+.textContent=text;
 
-/* =========================
-   إعادة اللعب
-========================= */
+}
+
+
+/*
+====================================================
+إعادة نفس المستوى
+====================================================
+*/
 
 function restartGame(){
-startGame(currentCategory);
+
+startGame(currentLevel);
+
 }
 
 
-/* =========================
-   الرجوع للأقسام
-========================= */
+/*
+====================================================
+اختيار مستوى آخر
+====================================================
+*/
+
+function chooseAnotherLevel(){
+
+clearInterval(timer);
+
+document.getElementById("result")
+.classList.remove("active");
+
+document.getElementById("levels")
+.classList.add("active");
+
+}
+
+
+/*
+====================================================
+العودة للأقسام
+====================================================
+*/
 
 function goHome(){
 
 clearInterval(timer);
 
-document.getElementById("game").classList.remove("active");
-document.getElementById("result").classList.remove("active");
-document.getElementById("home").classList.add("active");
+document.getElementById("levels")
+.classList.remove("active");
+
+document.getElementById("game")
+.classList.remove("active");
+
+document.getElementById("result")
+.classList.remove("active");
+
+document.getElementById("home")
+.classList.add("active");
 
 }
 
 </script>
 
 </body>
-    </html>
+                                                     </html>
